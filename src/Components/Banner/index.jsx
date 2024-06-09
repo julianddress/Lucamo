@@ -28,7 +28,6 @@ const StyledGradient = styled.div`
     background-image: -webkit-linear-gradient(271.5deg, ${ColorPrincipal} 45%, #F0F5F5 50%);
 `;
 
-
 const Banner = () => {
     return  <StyledSection className="alinear-items">
                 <div className="alinear-items banner">

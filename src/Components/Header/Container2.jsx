@@ -5,12 +5,12 @@ import searchLogo from '../../assets/img/search.svg';
 
 const Container = styled.div`
     width: 70%;
-    padding: 0 40px 0 150px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     div{
         position: relative;
     }
+    gap: 15%;
 `;
 
 const StyledInput = styled.input`

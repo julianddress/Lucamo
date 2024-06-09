@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import "../../App.css"
 import { ColorSecundario, ColorBtns } from "../UI/variables";
-import ShoppingCart from "../../assets/img/shoppingCart.svg"
+import ShoppingLogo from "../../assets/img/shoppingCart.svg"
 import Categoria from "./Categorias";
 import Product from "./Product";
 
@@ -11,7 +11,7 @@ const StyledSection = styled.section`
     background-color: ${ColorSecundario};
 `;
 
-const Container = styled.div`
+const ShoppingCart = styled.div`
     span{
         padding-left: 20px;
         font-size: 24px;
@@ -35,23 +35,26 @@ const StyledCart = styled.div`
 const StyledData = styled.div`
     padding: 50px;
     display: grid;
-    grid-template-columns: 2fr 5fr;
-    gap: 40px;
+    grid-template-columns: 1.5fr 5fr;
+    gap: 80px;
 `;
 
 const Products = () => {
     return  <StyledSection>
-                <Container className="alinear-items">
+
+                <ShoppingCart className="alinear-items">
                     <StyledCart className="alinear-items">
-                        <img src={ShoppingCart} alt="Logo Carrito de Compras" />
+                        <img src={ShoppingLogo} alt="Logo Carrito de Compras" />
                         <span>0</span>
                     </StyledCart>
                     <span>Mi Carrito</span>
-                </Container>
+                </ShoppingCart>
+
                 <StyledData>
                     <Categoria/>
                     <Product/>
                 </StyledData>
+                
             </StyledSection>
 }
 

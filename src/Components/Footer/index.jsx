@@ -7,11 +7,16 @@ import { ColorPrincipal, ColorSecundario } from "../UI/variables";
 const StyledFooter = styled.footer`
     background-color: ${ColorPrincipal};
     div{
+        font-size: 20px;
         padding: 40px 0 10px 0;
         color: white;
         flex-direction: column;
         justify-content: center;
         gap: 10px;
+        .logo{
+            font-size: 32px;
+            font-weight: bolder;
+        }
     }
 `;
 
@@ -29,8 +34,8 @@ const Footer = () => {
                 </StyledGradient>
                 <div className="alinear-items">
                     <img src={Logo} alt="Logo Lucamo"></img>
-                    <span>LUCAMO</span>
-                    <span className="date">2022 - 2023</span>
+                    <span className="logo">LUCAMO</span>
+                    <span>2022 - 2023</span>
                 </div>
             </StyledFooter>
 };

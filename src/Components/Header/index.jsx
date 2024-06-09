@@ -7,8 +7,7 @@ import Container2 from "./Container2";
 
 const StyledHeader = styled.nav`
     display: flex;
-    justify-content: space-between;
-    padding: 5px 40px;
+    padding: 1rem 3rem;
     background-color: ${ColorPrincipal};
 `;
 

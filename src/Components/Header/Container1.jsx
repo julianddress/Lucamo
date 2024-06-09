@@ -71,7 +71,7 @@ const Container1 = () => {
                 <StyledLocation>
                     <a href="https://maps.app.goo.gl/HQHhdMcbm8Qfdq9H6" target="blank" className="alinear-items">
                         <img src={locationLogo} alt="Logo Ubicación"/>
-                        Ubicación
+                        Ubicación Impolujos
                     </a>                    
                 </StyledLocation>
             </Container>
