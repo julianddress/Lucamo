@@ -63,9 +63,9 @@ const Container1 = () => {
                 </StyledMenu>
 
                 <StyledBtns className="alinear-items">
-                    <a href="id">INICIAR SESION</a>
+                    <a href="id">PRODUCTOS NACIONALES</a>
                     <span >|</span>
-                    <a className="signup" href="id">REGISTRARME</a>
+                    <a className="signup" href="id">IMPORTADOS</a>
                 </StyledBtns>
 
                 <StyledLocation>

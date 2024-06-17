@@ -21,6 +21,7 @@ const StyledInput = styled.input`
     border: white 2px solid;
     font-size: 18px;
     color: white;
+    box-shadow: 0px 5px 40px rgba(0, 0, 0, 20%);
     &::placeholder {
         color: #FFF; 
     }
@@ -38,8 +39,8 @@ const StyledSearch = styled.img`
 `;
 
 const StyledLogo = styled.span`
-    font-size: 32px;
-    font-weight: 900;
+    font-size: 42px;
+    font-weight: bold;
     color: white;
 `;
 

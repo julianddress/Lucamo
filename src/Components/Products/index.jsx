@@ -3,7 +3,6 @@ import styled from "styled-components";
 import "../../App.css"
 import { ColorSecundario, ColorBtns } from "../UI/variables";
 import ShoppingLogo from "../../assets/img/shoppingCart.svg"
-import Categoria from "./Categorias";
 import Product from "./Product";
 
 const StyledSection = styled.section`
@@ -34,9 +33,6 @@ const StyledCart = styled.div`
 
 const StyledData = styled.div`
     padding: 50px;
-    display: grid;
-    grid-template-columns: 1.5fr 5fr;
-    gap: 80px;
 `;
 
 const Products = () => {
@@ -47,11 +43,10 @@ const Products = () => {
                         <img src={ShoppingLogo} alt="Logo Carrito de Compras" />
                         <span>0</span>
                     </StyledCart>
-                    <span>Mi Carrito</span>
+                    <span>Mi Cotización</span>
                 </ShoppingCart>
 
                 <StyledData>
-                    <Categoria/>
                     <Product/>
                 </StyledData>
                 
