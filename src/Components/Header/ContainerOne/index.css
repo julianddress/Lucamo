@@ -1,0 +1,49 @@
+.containerOne{
+    gap: 15%;
+    color: white;
+    width: 100%;
+    padding-left: 4rem;
+}
+
+.menu{
+    padding: 10px 0;
+    text-align: center;
+    cursor: pointer;
+    .menu-text{
+        display: block;
+        font-size: 22px;
+    }
+    .menu-logo{
+        max-width: 30px;
+    }
+}
+
+.options{
+    text-align: center;
+
+    a{
+        margin: 20px;
+    }
+    span{
+        font-size: 32px;
+    }
+    .signup{
+        font-size: 22px;
+        padding: 10px 18px;
+        color: black;
+        border-radius: 16px;
+        background-color: var(--button-color);
+        box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.25);
+    }
+}
+
+.location{
+    a{
+        font-size: 22px;
+        text-decoration: none;
+        color: white;
+    }
+    img{
+        margin-right: 10px;
+    }
+}

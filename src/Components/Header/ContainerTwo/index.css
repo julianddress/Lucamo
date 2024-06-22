@@ -1,0 +1,42 @@
+.containerTwo{
+    width: 70%;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 4rem;
+
+    .div{
+        position: relative;
+    }
+    gap: 15%;
+
+    img{
+        position: absolute;
+        right: 8px;
+        top: 5px;
+        cursor: pointer;
+    }
+}
+
+.input{
+    width: 300px;
+    padding: 12px 15px;
+    border-radius: 20px;
+    background-color: transparent;
+    border: white 2px solid;
+    font-size: 18px;
+    color: white;
+    box-shadow: 0px 5px 40px rgba(0, 0, 0, 20%);
+    &::placeholder {
+        color: #FFF; 
+    }
+    &:focus{
+        outline: none;
+        border: #A3FFBF 2px solid;
+    }
+}
+
+.logo{
+    font-size: 42px;
+    font-weight: bold;
+    color: white;
+}

@@ -1,0 +1,12 @@
+:root {
+
+  --background-color-principal: #1985BF;
+  --button-color: #A3FFBF;
+  --background-color-secundario: #F0F5F5;
+}
+
+body{
+    margin: 0;
+    font-family: "Padauk", sans-serif;
+}
+

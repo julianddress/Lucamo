@@ -1,0 +1,22 @@
+footer{
+    background-color: var(--background-color-principal);
+}
+
+.effect{
+    height: 100px;
+    background-image: -webkit-linear-gradient(271.5deg, var(--background-color-secundario)  49%, var(--background-color-principal) 51%);
+}
+
+.data{
+        font-size: 20px;
+        padding: 40px 0 10px 0;
+        color: white;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1.5rem;
+}
+
+.brand{
+    font-size: 32px;
+    font-weight: bolder;
+}

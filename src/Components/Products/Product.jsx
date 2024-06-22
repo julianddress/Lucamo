@@ -7,10 +7,11 @@ import AddToCart from "../../assets/img/addToCart.png"
 const Container = styled.div`
     display: flex;
     flex-direction: column;
-    padding: 50px;
-    border-radius: 50px;
     background-color: white;
+
     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.29);
+    border-radius: 50px;
+    padding: 50px;
 `;
 
 const CardContainer = styled.div`
@@ -18,7 +19,7 @@ const CardContainer = styled.div`
     flex-wrap: wrap;
     justify-content: center;
     justify-items: center;
-    flex: 8;
+    
 `;
 
 const Card = styled.div`
@@ -81,10 +82,14 @@ const Add = styled.div`
 `;
 
 const StockContainer = styled.div`
+    text-align: center !important;
     height: 4rem;
-    display: flex;
-    justify-content: center;
+
     border: red solid .2rem;
+
+    span{
+        
+    }
 `;
 
 const Product = () => {
@@ -99,28 +104,12 @@ const Product = () => {
                         <h3>mazda, suzuki, audi</h3>
                         <button>Detalles</button>
                     </Card>
-                    <Card>
-                        <Add>
-                            <img src={AddToCart} alt="Add To Cart"/>
-                        </Add>
-                        <img src={ProductLogo} alt="Imagen Producto"/>
-                        <h2>Farola Derecha</h2>
-                        <h3>mazda, suzuki, audi</h3>
-                        <button>Detalles</button>
-                    </Card>
-                    <Card>
-                        <Add>
-                            <img src={AddToCart} alt="Add To Cart"/>
-                        </Add>
-                        <img src={ProductLogo} alt="Imagen Producto"/>
-                        <h2>Farola Derecha</h2>
-                        <h3>mazda, suzuki, audi</h3>
-                        <button>Detalles</button>
-                    </Card>
                 </CardContainer>
-                
-                <StockContainer>
 
+                <StockContainer>
+                    <span>
+                        Hola
+                    </span>
                 </StockContainer>
                 
             </Container>

@@ -1,0 +1,5 @@
+nav{
+    display: flex;
+    padding: 1rem 3rem;
+    background-color: var(--background-color-principal);
+}
