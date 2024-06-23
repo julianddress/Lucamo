@@ -5,7 +5,7 @@ import searchLogo from '../../../assets/img/search.svg';
 
 const Container2 = () => {
     return  (
-                <div className="alinear-items containerTwo">
+                <div className="alinear-items container-two">
                     <div className="div">
                         <input className="input" type="text" name="input" placeholder="Buscar"/>
                         <img src={searchLogo} alt=""/>

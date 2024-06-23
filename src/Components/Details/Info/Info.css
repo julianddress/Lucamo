@@ -1,0 +1,95 @@
+.data-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+}
+
+.data-container-top{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex: 1;
+}
+
+.data-container-reference{
+    display: grid;
+    justify-items: center;
+    font-size: 2rem;
+    padding: 2rem;
+    flex: 3;
+
+    h1, h3{
+        margin: 0;
+    }
+
+    h3{
+        margin-top: 1rem;
+        color: red;
+    }
+}
+
+.data-container-description-title{
+    font-size: 1.5rem;
+    width: 90%;
+    flex: 1;
+    border-bottom: inset;
+    margin-bottom: 1rem;
+    padding-bottom: .5rem;
+}
+
+.data-container-description-content{
+    width: 90%;
+    font-size: 1.4rem;
+    flex: 10;   
+
+    ul{
+        list-style: initial;
+        line-height: 2rem;
+        padding-left: 2rem;
+    }
+}
+
+.data-container-description-features{
+    display: flex;
+    font-size: 1.2rem;
+    padding: 1rem 0;
+    flex: 7;
+    
+    ul{
+        display: grid;
+        width: 100%;
+    }
+
+    li{
+        display: inline-flex;
+        align-items: center;
+    }
+
+    h3{
+        min-width: 20%;
+        margin: 0;
+    }
+}
+
+.data-container-bottom{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 15%;
+}
+
+button{
+    width: max-content;
+    height: max-content;
+    padding: 0.5rem 0.8rem;
+    border-radius: 0.6rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border: none;
+    color: black;
+    background-color: #A1F6AA;
+    font-family: "Hammersmith One", sans-serif;
+    margin-right: 3.5rem;
+    cursor: pointer;
+}

@@ -6,7 +6,7 @@ import locationLogo from '../../../assets/img/location.svg'
 
 const Container1 = () => {
     return  (
-                <div className="alinear-items containerOne">
+                <div className="alinear-items container-one">
                     <div className="menu">
                         <span className="menu-text">Menu</span>
                         <img src={menuLogo} alt="Menu logo" className="menu-logo"/>

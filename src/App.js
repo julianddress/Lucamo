@@ -1,20 +1,18 @@
 import './App.css';
-import Header from './Components/Header';
-import Banner from './Components/Banner';
-import Products from './Components/Products';
-import Footer from './Components/Footer'
 import '../src/assets/css/base.css'
-import ContainerInfo from "./Components/Products/Details"
+import Details from './Components/Details'
+import Header from './Components/Header'
+import Banner from './Components/Banner'
+import Stock from './Components/Stock'
+import Footer from './Components/Footer'
 
 function App() {
   return ( 
           <>
-              {/* <ContainerInfo>
-
-              </ContainerInfo> */}
+              <Details/>
               <Header/>
               <Banner/>
-              <Products/>
+              <Stock/>
               <Footer/>
           </>  
   );

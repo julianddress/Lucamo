@@ -1,0 +1,33 @@
+section{
+    background-color: var(--background-color-secundario);
+}
+
+.shopcart{
+    gap: 1.5rem;
+}
+
+.shopcart-item{
+    position: relative;
+    justify-content: center;
+    background-color: var(--button-color);
+    width: 5rem;
+    height: 5rem;
+    border-radius: 0 50px 50px 0;
+
+    span{
+        position: absolute;
+    }
+
+    img{
+        width: 70%;
+    }
+}
+
+.shopcart-title{
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.container-products{
+    padding: 50px;
+}
