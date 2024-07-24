@@ -1,5 +1,6 @@
 section{
     background-color: var(--background-color-secundario);
+    position: relative;
 }
 
 .shopcart{
@@ -10,16 +11,18 @@ section{
     position: relative;
     justify-content: center;
     background-color: var(--button-color);
-    width: 5rem;
+    width: 6rem;
     height: 5rem;
     border-radius: 0 50px 50px 0;
 
     span{
         position: absolute;
+        font-size: 20px;
     }
 
     img{
-        width: 70%;
+        width: 60%;
+        margin-right: 5%;
     }
 }
 

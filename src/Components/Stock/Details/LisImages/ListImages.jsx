@@ -1,6 +1,6 @@
 import React from "react";
 import './ListImages.css'
-import farola from "../../../assets/img/comments.svg"
+import farola from "../../../../assets/img/comments.svg"
 
 const DetallesImages = () =>{
 
