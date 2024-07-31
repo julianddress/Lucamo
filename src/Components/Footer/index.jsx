@@ -13,7 +13,7 @@ const Footer = () => {
                     <div className="alinear-items data">
                         <img src={Logo} alt="Logo Lucamo"></img>
                         <span className="brand">LUCAMO</span>
-                        <span>2022 - 2023</span>
+                        <span>Fundado en 2022</span>
                     </div>
                 </footer>
     )

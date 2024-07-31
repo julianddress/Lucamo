@@ -7,7 +7,7 @@ const Container2 = () => {
     return  (
                 <div className="alinear-items container-two">
                     <div className="div">
-                        <input className="input" type="text" name="input" placeholder="Buscar"/>
+                        <input className="input" type="text" name="input" placeholder="Buscar producto"/>
                         <img src={searchLogo} alt=""/>
                     </div>
                     <span className="logo">LUCAMO</span>

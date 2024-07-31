@@ -10,9 +10,10 @@
     gap: 15%;
 
     img{
+        width: 10%;
         position: absolute;
         right: 8px;
-        top: 5px;
+        top: 10px;
         cursor: pointer;
     }
 }
@@ -22,12 +23,12 @@
     padding: 12px 15px;
     border-radius: 20px;
     background-color: transparent;
-    border: white 2px solid;
+    border: rgba(255, 255, 255, 0.593) 2px solid;
     font-size: 18px;
-    color: white;
+    color: rgb(255, 255, 255);
     box-shadow: 0px 5px 40px rgba(0, 0, 0, 20%);
     &::placeholder {
-        color: #FFF; 
+        color: #ffffff9e; 
     }
     &:focus{
         outline: none;
@@ -36,7 +37,7 @@
 }
 
 .logo{
-    font-size: 42px;
+    font-size: 40px;
     font-weight: bold;
     color: white;
 }

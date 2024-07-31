@@ -5,24 +5,12 @@
     padding-left: 4rem;
 }
 
-.menu{
-    padding: 10px 0;
-    text-align: center;
-    cursor: pointer;
-    .menu-text{
-        display: block;
-        font-size: 22px;
-    }
-    .menu-logo{
-        max-width: 30px;
-    }
-}
-
 .options{
     text-align: center;
 
     a{
         margin: 20px;
+        font-weight: bolder;
     }
     span{
         font-size: 32px;
@@ -38,6 +26,12 @@
 }
 
 .location{
+
+    border: white;
+    border-top-style: outset;
+    border-width: 2px;
+    padding: 10px 40px 0 30px;
+    
     a{
         font-size: 22px;
         text-decoration: none;
