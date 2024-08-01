@@ -3,7 +3,6 @@ import "../../../App.css"
 import './Product.css'
 import ProductLogo from "../../../assets/img/product.png"
 import AddToCart from "../../../assets/img/addToCart.png"
-import navBar from "../Navigation/navigation"
 
 const Product = ({onShowDetails, handleCounter}) => {
 

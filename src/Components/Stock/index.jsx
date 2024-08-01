@@ -4,6 +4,7 @@ import './Stock.css'
 import ShoppingLogo from "../../assets/img/shoppingCart.svg"
 import Products from "./Products/Index";
 import Details from "./Details/index"; 
+import ShoppingCart from "./ShoppingCart/ShoppingCart";
 
 const Stock = () => {
 
@@ -18,17 +19,29 @@ const Stock = () => {
         setShowDetails(false);
     }
 
-    // HOOK FOR SHOP CART
+    // HOOK FOR SHOP CART LOGO
     const [count, setCount ] = useState(0);
 
     const incrementCart = () => {
         setCount(count + 1);
     }
 
+    // HOOK FOR SHOPPING CART
+    const [ showCart, setShowCart] = useState(false);
+
+    const openCart = () =>{
+        setShowCart(true);
+    }
+
+    const closeCart = () =>{
+        setShowCart(false);
+    }
+
     return  (
                 <section>
+                    {showCart && <ShoppingCart onCloseCart={closeCart}/>}
                     <div className="shopcart alinear-items">
-                        <div className="shopcart-item alinear-items">
+                        <div className="shopcart-item alinear-items" onClick={openCart}>
                             <img src={ShoppingLogo} alt="Logo Carrito de Compras" />
                             <span>{count}</span>
                         </div>

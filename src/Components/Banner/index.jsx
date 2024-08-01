@@ -3,7 +3,6 @@ import styled from "styled-components";
 import bannerCarro from "../../assets/img/car.png"
 import "../../Components/Banner/Banner.css";
 import "../../assets/css/base.css"
-import bombilla from "../../assets/img/bombilla.svg"
 
 const StyledGradient = styled.div`
     height: 100px;
