@@ -1,3 +1,7 @@
+![image](https://github.com/user-attachments/assets/d665a1b0-b923-405e-a0e9-025bbd074516)
+
+# *THIS APPLICATION WILL BE DEPLOY SOON!*
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
