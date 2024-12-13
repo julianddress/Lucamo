@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import "../../App.css"
-import './Stock.css'
+import Styles from './Stock.module.css'
 import ShoppingLogo from "../../assets/img/shoppingCart.svg"
-import Products from "./Products/Index";
+import Products from "./Products/Products";
 import Details from "./Details/index"; 
-import ShoppingCart from "./ShoppingCart/ShoppingCart";
+import ShoppingCart from "./Cart/CartSummary/CartSummary";
 
 const Stock = () => {
 
@@ -40,15 +39,15 @@ const Stock = () => {
     return  (
                 <section>
                     {showCart && <ShoppingCart onCloseCart={closeCart}/>}
-                    <div className="shopcart alinear-items">
-                        <div className="shopcart-item alinear-items" onClick={openCart}>
+                    <div className={Styles.shopcart}>
+                        <div className={Styles.shopcart_item} onClick={openCart}>
                             <img src={ShoppingLogo} alt="Logo Carrito de Compras" />
                             <span>{count}</span>
                         </div>
-                        <span className="shopcart-title">Mi Cotización</span>
+                        <span className={Styles.shopcart_title}>Mi Cotización</span>
                     </div>
 
-                    <div className="container-products">
+                    <div className={Styles.container_products}>
                         <Products handleCounter={incrementCart} onShowDetails={openDetails}/>
                         {showDetails && <Details onCloseDetails={closeDetails} />}
                     </div>
@@ -57,4 +56,4 @@ const Stock = () => {
     )
 }
 
-export default Stock;
+export {Stock};

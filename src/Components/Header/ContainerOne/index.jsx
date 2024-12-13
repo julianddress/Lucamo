@@ -1,22 +1,21 @@
 import React from "react";
-import '../../../App.css'
-import './index.css'
+import Styles from './index.module.css'
 import locationLogo from '../../../assets/img/location.svg'
 
 const Container1 = () => {
     return  (
-                <div className="alinear-items container-one">
-                    <div className="location">
-                        <a href="https://maps.app.goo.gl/HQHhdMcbm8Qfdq9H6" target="blank" className="alinear-items">
+                <div className={Styles.container1}>
+                    <div className={Styles.location}>
+                        <a href="https://maps.app.goo.gl/HQHhdMcbm8Qfdq9H6" target="blank">
                             <img src={locationLogo} alt="Logo Ubicación"/>
                             Ubicación
                         </a>                    
                     </div>
 
-                    <div className="alinear-items options">
+                    <div className={Styles.options}>
                         <a href="id">PRODUCTOS NACIONALES</a>
                         <span >|</span>
-                        <a className="signup" href="id">IMPORTADOS</a>
+                        <a className={Styles.signup} href="id">IMPORTADOS</a>
                     </div>
                 </div>
     )

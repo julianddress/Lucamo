@@ -5,9 +5,13 @@ section{
 
 .shopcart{
     gap: 1.5rem;
+    display: flex;
+    align-items: center;
 }
 
-.shopcart-item{
+.shopcart_item{
+    display: flex;
+    align-items: center;
     position: relative;
     justify-content: center;
     background-color: var(--button-color);
@@ -26,11 +30,11 @@ section{
     }
 }
 
-.shopcart-title{
+.shopcart_title{
     font-size: 24px;
     font-weight: bold;
 }
 
-.container-products{
+.container_products{
     padding: 50px;
 }

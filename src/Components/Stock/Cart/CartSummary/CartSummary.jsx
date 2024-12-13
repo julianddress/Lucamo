@@ -1,11 +1,11 @@
 import React from "react";
-import "./ShoppingCart.css"
-import CartItem from "./CartItem/CartItem";
+import Styles from "./CartSummary.module.css"
+import CartItem from "../CartItem/CartItem";
 
 const ShoppingCart = ({ onCloseCart }) =>{
-    return  <section className="section">
-                <div className="section-cart">
-                    <div className="section-cart-items">
+    return  <section className={Styles.section}>
+                <div className={Styles.section_cart}>
+                    <div className={Styles.section_cart_items}>
                         <CartItem></CartItem>
                         <CartItem></CartItem>
                         <CartItem></CartItem>
@@ -13,7 +13,7 @@ const ShoppingCart = ({ onCloseCart }) =>{
                         <CartItem></CartItem>
                         <CartItem></CartItem>
                     </div>
-                    <button className="section-cart-button">Enviar cotizaciòn</button>
+                    <button className={Styles.section_cart_button}>Enviar cotizaciòn</button>
                 </div>
             </section>
 

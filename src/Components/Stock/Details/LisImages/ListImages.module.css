@@ -1,4 +1,4 @@
-.image-container{
+.image_container{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,7 +19,7 @@
     }
 }
 
-.image-principal{
+.image_principal{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,7 +31,7 @@
     }
 }
 
-.image-secondary{
+.image_secondary{
     display: flex;
     justify-content: center;
     align-items: baseline;

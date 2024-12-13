@@ -1,16 +1,16 @@
 import React from "react";
-import './ListImages.css'
+import Styles from './ListImages.module.css'
 import farola from "../../../../assets/img/comments.svg"
 
 const DetallesImages = () =>{
 
-    return  <div className="image-container">
-                <div className="image-principal">
+    return  <div className={Styles.image_container}>
+                <div className={Styles.image_principal}>
                     <span>
                         <img src={farola} alt="Imagen Product"></img>
                     </span>
                 </div>
-                <div className="image-secondary">
+                <div className={Styles.image_secondary}>
                     <ul>
                         <li>
                             <span>

@@ -1,5 +1,6 @@
 nav{
     display: flex;
+    align-items: center;
     padding: 1rem 3rem;
     background-color: var(--background-color-principal);
 }

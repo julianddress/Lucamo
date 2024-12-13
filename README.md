@@ -1,74 +1,107 @@
 ![image](https://github.com/user-attachments/assets/d665a1b0-b923-405e-a0e9-025bbd074516)
 
-# *THIS APPLICATION WILL BE DEPLOY SOON!*
 
-# Getting Started with Create React App
+# E-Commerce App 🚀
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este es un proyecto de aplicación de comercio electrónico construido con React. ¡Próximamente estará disponible para el público! 🎉
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🛠 Estado del Proyecto
+**Estado:** En desarrollo (próximo a despliegue).
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 📋 Tabla de Contenidos
+1. [Instalación](#instalación)
+2. [Uso](#uso)
+3. [Scripts Disponibles](#scripts-disponibles)
+4. [Estructura del Proyecto](#estructura-del-proyecto)
+5. [Deployment](#deployment)
+6. [Tecnologías Usadas](#tecnologías-usadas)
+7. [Contribución](#contribución)
+8. [Licencia](#licencia)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🧑‍💻 Instalación
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clona este repositorio:
 
-### `npm run build`
+    git clone https://github.com/tu-usuario/tu-repo.git
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## ▶️ Uso
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Inicia el servidor de desarrollo:
 
-### `npm run eject`
+    npm start
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. Abre http://localhost:3000 en tu navegador para ver la aplicación.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 📜 Scripts Disponibles
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    npm start: Ejecuta la aplicación en modo de desarrollo.
+    npm test: Ejecuta los tests.
+    npm run build: Crea una versión optimizada para producción.
+    npm run eject: Extrae configuraciones personalizables (solo si es necesario).
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 📂 Estructura del Proyecto
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+src/
+├── components/                    # Componentes reutilizables (e.g., botones, modales)
+|   ├── Header/                    # Funcionalidades específicas del Header
+│   |   ├── Container1/            # 
+|   |   |   └── Container1.js      # 
+|   ├── Banner/                    # Funcionalidades específicas del Banner
+│   |   ├── index.js               # 
+|   ├── stock/                     # Funcionalidades específicas del stock
+│   |   ├── cart/                  # Manejo del carrito de compras
+|   |   |   └── CartSummary.js     # Displays the total amount and items in the cart.
+|   |   |   └── CartItem.js        # Manages individual items in the cart (quantity, price, remove button).
+|   |   |   └── CartActions.js     # Provides actions like "Clear Cart" or "Proceed to Checkout".
+|   |   |   └── CartUtils.js       # Utility functions for calculating totals or formatting cart data.
+├   |   ├── Details/               # Funcionalidades específicas de los detalles del producto seleccionado.
+|   |   |   └── Name.js            # 
+├   |   ├── Products/              # Funcionalidades específicas de los detalles del producto seleccionado.
+|   |   |   ├── Item/              # Manejo de cada producto
+|   |   |   |   └── Item.js        # 
+|   |   |   ├── Pagination/        # Manejo de paginas con multiples productos
+|   |   |   |   └── Pagination.js  # 
+│   |   |   └── Products.js        # 
+│   |   ├── index.js               # 
+|   ├── Footer/                    # Funcionalidades específicas del Footer
+|   |   └── index.js               #
+|   |── index.js                   # 
+├── pages/                         # Páginas principales (e.g., HomePage, ProductPage)
+│   ├── products/                  # Listado y detalles de productos
+│   └── navigation/                # Navegación entre pantallas
+├── App.js                         # Componente raíz
+├── index.js                       # Punto de entrada de React
+└── styles/                        # Archivos CSS globales o SCSS
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🚀 Deployment
 
-### Analyzing the Bundle Size
+1. Genera una versión de producción:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    npm run build
 
-### Making a Progressive Web App
+2. Despliega a Firebase:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+    Firabase deploy
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 💻 Tecnologías Usadas
 
-### Deployment
+- React: Biblioteca para construir la UI.
+- Firebase: Backend (hosting, autenticación y base de datos).
+- JavaScript (ES6+): Lenguaje principal.
+- CSS/SCSS ( Module ): Estilización.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+## 🤝 Contribución
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📝 Licencia

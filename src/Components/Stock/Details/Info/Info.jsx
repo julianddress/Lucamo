@@ -1,11 +1,11 @@
 import React from "react";
-import './Info.css'
+import Styles from './Info.module.css'
 
 const DetallesData = () =>{
 
-    return      <div className="data-container">
-                    <div className="data-container-top">
-                        <div className="data-container-reference">
+    return      <div className={Styles.data_container}>
+                    <div className={Styles.data_container_top}>
+                        <div className={Styles.data_container_reference}>
                             <span>
                                 <h1>
                                     Farola Derecha 18V JU
@@ -17,14 +17,14 @@ const DetallesData = () =>{
                                 </h3>
                             </span>
                         </div>
-                        <div className="data-container-description-title">
+                        <div className={Styles.data_container_description_title}>
                             <span>
                                 <h3>
                                     Sobre este articulo:
                                 </h3>
                             </span>
                         </div>
-                        <div className="data-container-description-content">
+                        <div className={Styles.data_container_description_content}>
                             <ul>
                                 <li>Utilizado en mazda, honda, suzuki y mucho muchas otras referencias mas.</li>
                                 <li>Util para tractomulas, camiones y demas.</li>
@@ -32,7 +32,7 @@ const DetallesData = () =>{
                                 <li>Alcance de 10 metro de profundidad.</li>
                             </ul>
                         </div>
-                        <div className="data-container-description-features">
+                        <div className={Styles.data_container_description_features}>
                             <ul>
                                 <li>
                                     <h3>
@@ -53,7 +53,7 @@ const DetallesData = () =>{
                             </ul>
                         </div>
                     </div>
-                    <div className="data-container-bottom">
+                    <div className={Styles.data_container_bottom}>
                         <button>AÑADIR</button>
                     </div>
                 </div>

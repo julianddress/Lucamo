@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import bannerCarro from "../../assets/img/car.png"
-import "../../Components/Banner/Banner.css";
+import Styles from "../../Components/Banner/Banner.module.css";
 import "../../assets/css/base.css"
 
 const StyledGradient = styled.div`
@@ -12,7 +12,7 @@ const StyledGradient = styled.div`
 const Banner = () => {
     return  (
                 <section>
-                    <div className="banner">
+                    <div className={Styles.banner}>
                         <img src={bannerCarro} alt="Carro Mustang" />
                     </div>
                     <StyledGradient>
@@ -22,4 +22,4 @@ const Banner = () => {
     )
 } 
 
-export default Banner;
+export {Banner};
