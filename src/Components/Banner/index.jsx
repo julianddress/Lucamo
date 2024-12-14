@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import bannerCarro from "../../assets/img/car.png"
-import Styles from "../../Components/Banner/Banner.module.css";
+import Styles from "./Banner.module.css";
 import "../../assets/css/base.css"
 
 const StyledGradient = styled.div`

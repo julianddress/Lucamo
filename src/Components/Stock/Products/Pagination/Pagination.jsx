@@ -1,15 +1,15 @@
 import React from "react";
 import Styles from "./Pagination.module.css";
 
+/* # Lógica y botones de paginación */
+
 const Pagination = () => {
 
-        return (        <navBar className={Styles.navigate_container}>
+        return (        <div className={Styles.navigate_container}>
                                 <span>
                                 Hola
                                 </span>
-                        </navBar>    
-                
-                /* # Lógica y botones de paginación */
+                        </div>    
                         
         )
 

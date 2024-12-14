@@ -5,7 +5,7 @@ import {Pagination} from "./Pagination/Pagination"
 
 //  # Lista de productos con lógica de paginación
 
-const Products = ({onShowDetails, handleCounter}) => {
+const Products = () => {
 
     return  (
                 <div className={Styles.container}>
