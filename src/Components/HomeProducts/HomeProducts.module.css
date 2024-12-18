@@ -7,3 +7,10 @@
     border-radius: 50px;
     padding: 50px;
 }
+
+.container_ProductCard{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-items: center;
+}

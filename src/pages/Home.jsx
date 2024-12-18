@@ -1,13 +1,14 @@
 import React from "react";
-import { Header, Banner, Stock, Footer } from "../Components/index";
+import { MainLayout } from "../Layouts/MainLayout";
+import { BannerSection, StockSection } from "../Sections";
 
 const Home = () =>{
     return  <>
 
-            <Header/>
-            <Banner/>
-            <Stock/>
-            <Footer/>
+            <MainLayout>
+                <BannerSection/>
+                <StockSection/>
+            </MainLayout>
 
             </>
 }

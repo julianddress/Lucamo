@@ -1,8 +1,3 @@
-section{
-    background-color: var(--background-color-secundario);
-    position: relative;
-}
-
 .shopcart{
     gap: 1.5rem;
     display: flex;
@@ -33,8 +28,4 @@ section{
 .shopcart_title{
     font-size: 24px;
     font-weight: bold;
-}
-
-.container_products{
-    padding: 50px;
 }
