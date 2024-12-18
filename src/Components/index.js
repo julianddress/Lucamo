@@ -1,6 +1,7 @@
-import {Banner} from "./Banner";
 import {Header} from "./Header";
+import {Banner} from "./Banner";
 import {Footer} from "./Footer";
-import {Stock} from "./Stock";
+import { CartLogo } from "./Cart";
+import { HomeProducts } from "./HomeProducts";
 
-export {Header, Banner, Stock,  Footer};
+export {Header, Banner, Footer, CartLogo, HomeProducts};

@@ -105,3 +105,59 @@ src/
 ## 🤝 Contribución
 
 ## 📝 Licencia
+
+
+
+<!-- 
+src/
+├── assets/             # Images, logos, icons, fonts
+├── components/         # Reusable UI components
+│   ├── Button/
+│   │   ├── Button.module.css
+│   │   └── Button.jsx
+│   ├── Navbar/
+│   │   ├── Navbar.module.css
+│   │   └── Navbar.jsx
+│   └── Footer/
+│       ├── Footer.module.css
+│       └── Footer.jsx
+├── pages/              # Page-level components
+│   ├── Admin/
+│   │   ├── Dashboard.jsx
+│   │   ├── Reports.jsx
+│   │   └── Orders.jsx
+│   ├── Auth/
+│   │   ├── Login.jsx
+│   │   └── Signup.jsx
+│   ├── Home/
+│   │   ├── Home.module.css
+│   │   └── Home.jsx
+│   ├── Cart/
+│   │   ├── Cart.module.css
+│   │   └── Cart.jsx
+│   ├── Product/
+│   │   ├── ProductDetails.jsx
+│   │   └── ProductList.jsx
+│   └── NotFound/
+│       ├── NotFound.module.css
+│       └── NotFound.jsx
+├── contexts/           # Context API for state management
+│   ├── AuthContext.js
+│   ├── CartContext.js
+│   └── ProductsContext.js
+├── services/           # Firebase and API integration
+│   ├── firebaseConfig.js
+│   ├── auth.js
+│   ├── products.js
+│   └── orders.js
+├── utils/              # Helper functions and utilities
+│   ├── formatCurrency.js
+│   └── dateHelpers.js
+├── App.js              # Main app component
+├── index.js            # Entry point
+└── styles/             # Global styles
+    ├── variables.css   # CSS variables for themes
+    ├── globals.css     # General global styles
+    └── reset.css       # Reset styles
+
+ -->
