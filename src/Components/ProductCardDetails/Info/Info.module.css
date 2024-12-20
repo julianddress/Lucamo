@@ -72,14 +72,14 @@
     }
 }
 
-.data_container_bottom{
+.data_container_button{
     display: flex;
     justify-content: flex-end;
     align-items: center;
     height: 15%;
 }
 
-button{
+.data_container_button{
     width: max-content;
     height: max-content;
     padding: 0.5rem 0.8rem;
@@ -91,5 +91,4 @@ button{
     background-color: #A1F6AA;
     font-family: "Hammersmith One", sans-serif;
     margin-right: 3.5rem;
-    cursor: pointer;
 }

@@ -1,14 +1,20 @@
 import React from "react";
 import { MainLayout } from "../Layouts/MainLayout";
 import { BannerSection, StockSection } from "../Sections";
+import { CartProvider } from "../Context/CartContext";
 
 const Home = () =>{
+
     return  <>
 
-            <MainLayout>
-                <BannerSection/>
-                <StockSection/>
-            </MainLayout>
+            <CartProvider>
+
+                <MainLayout>
+                    <BannerSection/>
+                    <StockSection/>
+                </MainLayout>
+
+            </CartProvider>
 
             </>
 }

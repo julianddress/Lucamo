@@ -1,8 +1,11 @@
 import React from "react";
 import Styles from "./CartLogo.module.css"
 import ShoppingLogo from "../../assets/img/shoppingCart.svg"
+import { useCart } from "../../Context/CartContext";
 
-const CartLogo = ({count}) =>{
+const CartLogo = () =>{
+
+    const {count} = useCart();
 
     return <>
 

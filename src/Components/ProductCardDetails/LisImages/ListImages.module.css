@@ -64,7 +64,6 @@
         position: absolute;
         border-color: black;
         overflow: visible;
-        cursor: pointer;
 
         opacity: .01;
         outline: 0;

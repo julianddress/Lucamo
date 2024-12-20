@@ -1,12 +1,16 @@
 :root {
-
-  --background-color-principal: #072347;
-  --button-color: #A3FFBF;
+  --background-color-header: #054c68;
+  --background-color-principal: #00668D;
   --background-color-secundario: #F0F5F5;
+  --background-color-footer: #1985BF;
+  --button-color: #EA9A28;
 }
 
 body{
     margin: 0;
-    font-family: "Padauk", sans-serif;
+}
+
+img, button, select{
+  cursor: pointer;
 }
 

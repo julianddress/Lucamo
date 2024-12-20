@@ -12,31 +12,3 @@
         width: 60%;
     }
 }
-
-.banner::after{
-    content: '';
-    background-image: url(../../assets/img/bombilla.svg);
-    position: absolute;
-    background-repeat: no-repeat;
-    background-size: contain;
-    display: block;
-    position: absolute;
-    width: 20%;
-    height: 75%;
-    top: 20%;
-    right: -3%;
-}
-
-.banner::before{
-    content: '';
-    background-image: url(../../assets/img/Treasure.svg);
-    position: absolute;
-    background-repeat: no-repeat;
-    background-size: contain;
-    display: block;
-    position: absolute;
-    width: 40%;
-    height: 100%;
-    top: 0%;
-    left: -10%;
-}

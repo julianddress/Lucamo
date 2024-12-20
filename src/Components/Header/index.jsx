@@ -1,17 +1,22 @@
 import React from "react";
-import '../../App.css'
-import Container1 from "./NavLeft";
-import Container2 from "./NavRight";
-import "../Header/Header.module.css"
+import "../Header/Header.css";
+import { Logo } from "./Logo";
+import { Categories } from "./Categories";
+import { SearchBar } from "./SearchBar";
+import { Account } from "./Account";
 
-const Header = () => {
+const Header = ({count}) => {
+    return (
 
-    return  (
-                <nav>
-                    <Container1 />
-                    <Container2 />
-                </nav>
-    ) 
-}
+            <nav className="navbar">
+
+                <Logo/>
+                <Categories/>
+                <SearchBar/>
+                <Account count={count}/>
+                
+            </nav>
+    );
+};
 
 export {Header};

@@ -1,0 +1,66 @@
+.navbar__account {
+    width: 80%;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-self: end;
+    gap: 10px;
+}
+
+.navbar__shoppingcart-count{
+    position: absolute;
+    color: aliceblue;
+    left: 9%;
+    top: 6%;
+}
+
+.navbar__shoppingcart-image{
+    width: 100%;
+}
+
+.navbar__account-link {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    gap: 8px; 
+}
+
+.navbar__username {
+    color: aliceblue;
+    text-align: center;
+    font-size: 16px;
+    display: inline-block; 
+}
+
+.navbar__account-img {
+    width: 35%;
+}
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 850px) {
+
+    .navbar__account-img {
+        width: 40%;
+    }
+
+    .navbar__username {
+        font-size: 12px;
+        width: min-content; 
+    }
+
+    .navbar__shoppingcart-count{
+        top: -30%;
+        left: 12%;
+    }
+
+}
+
+/* Media Query para pantallas muy pequeñas (móviles) */
+@media (max-width: 480px) {
+
+    .navbar__account {
+        grid-column: 2;
+        grid-row: 1;
+        gap: 10px;
+    }
+}

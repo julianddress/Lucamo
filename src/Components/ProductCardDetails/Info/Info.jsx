@@ -1,7 +1,10 @@
 import React from "react";
 import Styles from './Info.module.css'
+import { useCart } from "../../../Context/CartContext";
 
 const DetallesData = () =>{
+
+    const {incrementCart} = useCart();
 
     return      <div className={Styles.data_container}>
                     <div className={Styles.data_container_top}>
@@ -53,8 +56,8 @@ const DetallesData = () =>{
                             </ul>
                         </div>
                     </div>
-                    <div className={Styles.data_container_bottom}>
-                        <button>AÑADIR</button>
+                    <div className={Styles.data_container_button}>
+                        <button onClick={incrementCart}>AÑADIR</button>
                     </div>
                 </div>
 

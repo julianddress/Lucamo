@@ -1,0 +1,44 @@
+.navbar__logo{
+    width: 80%;
+}
+
+.navbar__logo-img{
+    width: 100%;
+}
+
+.navbar__menu{
+    display: none;
+}
+
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 850px) {
+
+    .navbar__logo{
+        width: 100%;
+    }
+
+}
+
+/* Media Query para pantallas muy pequeñas (móviles) */
+@media (max-width: 480px) {
+
+    .navbar__logo{
+        width: 80%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        justify-self: baseline;
+        gap: 10px;
+    }
+
+    .navbar__logo{
+        width: 60%;
+    }
+
+    .navbar__menu{
+        display: block;
+        width: max-content;
+    }
+    
+};

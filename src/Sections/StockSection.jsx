@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import {HomeProducts} from "../Components/HomeProducts";
-import ProductCardDetails from "../Components/ProductCardDetails"; 
+import { HomeProducts } from "../Components/HomeProducts";
 import { CartLogo } from "../Components";
+import ProductCardDetails from "../Components/ProductCardDetails"; 
+import {useProductDetails} from "../Context/useProductDetails"
 
 const Section = styled.section`
     background-color: var(--background-color-secundario);
@@ -15,35 +16,18 @@ const Products = styled.div`
 
 const StockSection = () => {
 
-    // HOOK - PRODUCT DETAILS
-    const [ showDetails, setShowDetails] = useState(false);
+    // Hooks reutilizables
+    const { showDetails, openDetails, closeDetails } = useProductDetails();
 
-    const openDetails = () =>{
-        setShowDetails(true);
-    }
+    return (
+        <Section>
+            <CartLogo />
+            <Products>
+                <HomeProducts onShowDetails={openDetails} />
+                {showDetails && <ProductCardDetails onCloseDetails={closeDetails} />}
+            </Products>
+        </Section>
+    );
+};
 
-    const closeDetails = () =>{
-        setShowDetails(false);
-    }
-
-     // HOOK FOR CART LOGO
-    const [count, setCount ] = useState(0);
-
-    const incrementCart = () => {
-        setCount(count + 1);
-    }
-
-    return  (
-                <Section>
-
-                    <CartLogo count={count} />
-                    <Products>
-                        <HomeProducts handleCounter={incrementCart} onShowDetails={openDetails}/>
-                        {showDetails && <ProductCardDetails onCloseDetails={closeDetails} />}
-                    </Products>
-
-                </Section>
-    )
-}
-
-export {StockSection};
+export { StockSection };
