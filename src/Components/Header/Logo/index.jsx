@@ -7,15 +7,17 @@ const Logo = () =>{
 
     return ( 
     
-            <div className="navbar__logo">
+            <div className="navbar__logo-container">
                 <div className="navbar__menu">
                     <a href="# " className="navbar__menu-link">
                         <img src={menu} alt="Menu de productos" className="navbar__menu-image"></img>
                     </a>
                 </div>
-                <a href="# " className="navbar__logo-link">
-                    <img src={LucamoLogo} alt="Company Logo" className="navbar__logo-img" />
-                </a>
+                <div className="navbar__logo">
+                    <a href="# " className="navbar__logo-link">
+                        <img src={LucamoLogo} alt="Company Logo" className="navbar__logo-img" />
+                    </a>
+                </div>
             </div>
 
     )

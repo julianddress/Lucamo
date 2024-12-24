@@ -1,17 +1,25 @@
 import React from "react";
-import styled from "styled-components";
 import {Banner} from "../Components";
 
-const StyledGradient = styled.div`
-    height: 100px;
-    background-image: -webkit-linear-gradient(271.5deg, var(--background-color-principal) 45%, #F0F5F5 50%);
-`;
+const carouselItems = [
+    {
+        image: 'https://static.vecteezy.com/system/resources/previews/006/828/785/non_2x/paper-art-shopping-online-on-smartphone-and-new-buy-sale-promotion-pink-backgroud-for-banner-market-ecommerce-women-concept-free-vector.jpg',
+        title: 'NEW SALE',
+        subtitle: 'Explore majestic heights',
+        link: 'https://github.com/julianddress',
+    },
+    {
+        image: 'https://static.vecteezy.com/system/resources/previews/006/828/785/non_2x/paper-art-shopping-online-on-smartphone-and-new-buy-sale-promotion-pink-backgroud-for-banner-market-ecommerce-women-concept-free-vector.jpg',
+        title: '50% OFF',
+        subtitle: 'Amazing buildings',
+        link: 'https://github.com/julianddress',
+    },
+];
 
 const BannerSection = () => {
     return  <>
                 <section>
-                    <Banner/>
-                    <StyledGradient/> {/* EFECTO EN DIAGONAL AL FINAL DEL SECTION */}
+                    <Banner items={carouselItems}/>
                 </section>
             </>
 } 

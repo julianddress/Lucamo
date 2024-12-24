@@ -7,7 +7,7 @@ const SearchBar = () => {
                 <div className="searchbar inter-regular">
 
                     <div className="filter">
-                        <select className="filter-options">
+                        <select className="filter-options" aria-label="Filtrar por marca">
                             <option>Todos</option>
                             <option value="Mazda">Mazda</option>
                             <option value="Chevrolet">Chevrolet</option>

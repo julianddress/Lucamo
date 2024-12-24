@@ -1,56 +1,66 @@
-.navbar__account {
-    width: 80%;
-    position: relative;
+.navbar__account-container {
+    width: 100%;
     display: flex;
-    align-items: flex-end;
+    justify-content: space-around;
+    align-items: center;
     justify-self: end;
-    gap: 10px;
+    gap: .8rem;
+}
+
+.navbar__shoppingcart{
+    position: relative;
+    width: 30%;
 }
 
 .navbar__shoppingcart-count{
     position: absolute;
     color: aliceblue;
-    left: 9%;
-    top: 6%;
+    left: 40%;
+    top: -15%;
 }
 
 .navbar__shoppingcart-image{
     width: 100%;
 }
 
-.navbar__account-link {
+.navbar__account{
     display: flex;
-    justify-content: center; 
-    align-items: center; 
-    gap: 8px; 
+}
+
+.navbar__account-link {
+    text-align: center;
 }
 
 .navbar__username {
     color: aliceblue;
     text-align: center;
     font-size: 16px;
-    display: inline-block; 
 }
 
 .navbar__account-img {
-    width: 35%;
+    width: 60%;
 }
 
 /* Media Query para pantallas pequeñas */
 @media (max-width: 850px) {
 
-    .navbar__account-img {
-        width: 40%;
+    .navbar__shoppingcart-count{
+        font-size: 12px;
+        left: 35%;
+        top: -20%;
+    }
+
+    .navbar__shoppingcart-image{
+        width: 80%;
     }
 
     .navbar__username {
         font-size: 12px;
-        width: min-content; 
+        align-content: center;
     }
 
-    .navbar__shoppingcart-count{
-        top: -30%;
-        left: 12%;
+    .navbar__account-img {
+        width: 45%;
     }
 
 }
@@ -58,9 +68,10 @@
 /* Media Query para pantallas muy pequeñas (móviles) */
 @media (max-width: 480px) {
 
-    .navbar__account {
+    .navbar__account-container {
         grid-column: 2;
         grid-row: 1;
-        gap: 10px;
+        gap: 0;
     }
+
 }

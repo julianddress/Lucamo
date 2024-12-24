@@ -1,5 +1,5 @@
 import {Header} from "./Header";
-import {Banner} from "./Banner";
+import {Banner} from "./Banner/Banner.tsx";
 import {Footer} from "./Footer";
 import { CartLogo } from "./Cart";
 import { HomeProducts } from "./HomeProducts";

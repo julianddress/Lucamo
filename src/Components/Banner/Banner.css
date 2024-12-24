@@ -1,0 +1,158 @@
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 100%;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    height: 100%;
+    background-color: var(--background-color-banner);
+}
+
+.carousel__card{
+    display: flex;
+    justify-content: center;
+}
+
+.carousel-slide img {
+    position: absolute;
+    max-width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    opacity: 1;
+    padding-top: 5rem;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.carousel__card-img{
+    border-radius: solid red 20px;
+}
+
+.carousel-content{
+    width: max-content;
+    height: auto;
+    padding-top: 1.5em;
+}
+
+.carousel-content h2{
+    font-size: 30px;
+    color: aliceblue;
+    text-align: center;
+}
+
+.carousel-content h3{
+    font-size: .8rem;
+    color: rgba(240, 248, 255, 0.67);
+    text-align: center;
+}
+
+.carousel-arrow {
+    position: absolute;
+    border-radius: 20%;
+    outline: none;
+    top: 45%;
+    max-width: 10%;
+    transition: background-color 0.2s;
+}
+
+.carousel-arrow:hover:not(:disabled) {
+    background-color: rgb(176, 206, 212);
+}
+
+.carousel-arrow:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.carousel-arrow.left {
+    left: 1%;
+}
+
+.carousel-arrow.right {
+    right: 1%;
+}
+
+.carousel__arrow-img{
+    width: 60%;
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1rem;
+}
+
+.carousel-dot {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background-color 0.2s;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.carousel-dot.active {
+    background-color: white;
+    transform: scale(1.2); 
+}
+
+.banner__stylegradient{
+    height: 100px;
+    background-image: -webkit-linear-gradient(271.5deg, var(--background-color-banner) 45%, #F0F5F5 50%);
+}
+
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 850px) {
+
+    .carousel-container {
+        height: 400px;
+    }
+
+    .carousel-content{
+        padding-top: 15px;
+    }
+
+}
+
+/* Media Query para pantallas muy pequeñas (móviles) */
+@media (max-width: 480px) {
+
+    .carousel-container {
+        height: 300px;
+    }
+
+    .carousel-arrow{
+        top: 10%
+    }
+
+    .carousel-content{
+        padding-top: 5px;
+    }
+
+    .carousel__card-img{
+        padding: 40px;
+    }
+
+    .carousel-dots{
+        bottom: 15%;
+    }
+
+    .banner__stylegradient{
+        display: none;
+    }
+
+};

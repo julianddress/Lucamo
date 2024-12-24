@@ -10,18 +10,21 @@ const Account = () =>{
 
     return (
 
-                <div className="navbar__account">
+                <div className="navbar__account-container padauk-bold">
 
-                    <span className="navbar__shoppingcart-count phudu-regular ">{count}</span>
-
-                    <a href="# " className="navbar__shoppingcart-link">
-                        <img src={Cart} alt="Shopping Cart" className="navbar__shoppingcart-image"/>
-                    </a>
+                    <div className="navbar__shoppingcart">
+                        <span className="navbar__shoppingcart-count">{count}</span>
+                        <a href="# " className="navbar__shoppingcart-link">
+                            <img src={Cart} alt="Shopping Cart" className="navbar__shoppingcart-image"/>
+                        </a>
+                    </div>
                     
-                    <a href="# " className="navbar__account-link">
-                        <span className="navbar__username padauk-bold">Hola, Julian</span>
-                        <img src={Profile} alt="User account" className="navbar__account-img" />
-                    </a>
+                    <div className="navbar__account">
+                        <span className="navbar__username">Hola,<br/>Julian</span>
+                        <a href="# " className="navbar__account-link">
+                            <img src={Profile} alt="User account" className="navbar__account-img" />
+                        </a>
+                    </div>
 
                 </div>
 
