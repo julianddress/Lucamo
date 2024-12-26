@@ -1,0 +1,17 @@
+:root {
+  --background-color-header: #054c68;
+  --background-color-banner: #00172E;
+  --background-color-principal: #00668D;
+  --background-color-secundario: #F0F5F5;
+  --background-color-footer: #1985BF;
+  --button-color: #EA9A28;
+}
+
+body{
+    margin: 0;
+}
+
+img, button, select{
+  cursor: pointer;
+}
+

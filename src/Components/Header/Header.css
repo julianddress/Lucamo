@@ -1,0 +1,31 @@
+.navbar{
+    display: grid;
+    grid-template-columns: auto 1fr 2fr auto; /* Define 4 columnas */
+    align-items: center; 
+    justify-items: center;
+    padding: 0.5rem 1.5rem;
+    background-color: var(--background-color-header);
+}
+
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 850px) {
+
+    .navbar {
+        grid-template-columns: 0.5fr 0 2fr auto; 
+        padding: 0.5rem 1rem;
+    }
+
+}
+
+/* Media Query para pantallas muy pequeñas (móviles) */
+@media (max-width: 480px) {
+
+    .navbar {
+        gap: 2px;
+        grid-template-columns: 1fr auto; 
+        grid-template-rows: auto;
+        padding: 0.5rem 0.5rem;
+    }
+
+};
