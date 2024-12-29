@@ -1,10 +1,10 @@
-![LucamoHomePage](image.png)
+![alt text](image.png)
 
 # E-Commerce App 🚀
 
 Este es un proyecto de aplicación de comercio electrónico construido con React. ¡Próximamente estará disponible para el público! 🎉
 
-# React + TypeScript + Vite
+# React + TypeScript + Tailwind + Vite 
 
 ---
 

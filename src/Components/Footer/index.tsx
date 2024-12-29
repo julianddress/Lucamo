@@ -22,7 +22,8 @@ export function Footer() {
     return (
             <footer className="bg-gray-800 text-gray-300">
                 <div className="container mx-auto px-4 py-12">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+
                         {/* Información de la Empresa */}
                         <FooterSection title="Sobre Nosotros">
                             <div className="space-y-3">
@@ -31,7 +32,7 @@ export function Footer() {
                                     con la mejor calidad y servicio.
                                 </p>
                             <div className="flex gap-4">
-                                <a href="#" className="hover:text-blue-400 transition-colors">
+                                <a href="https://www.facebook.com/profile.php?id=61553406257588" className="hover:text-blue-400 transition-colors" target='_blank' rel='noreferrer'>
                                 <Facebook size={20} />
                                 </a>
                                 <a href="https://www.instagram.com/impolujos_led?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" className="hover:text-pink-400 transition-colors" target='_blank' rel='noreferrer'>
@@ -98,7 +99,7 @@ export function Footer() {
                     <div className="mt-12 pt-8 border-t border-gray-700">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
                         {/* Métodos de pago */}
-                        <div className="flex items-center gap-4">
+                        <div className="flex justify-center items-center gap-4">
                             <CreditCard size={24} />
                             <span className="text-sm">Pagos 100% seguros</span>
                         </div>
@@ -109,7 +110,7 @@ export function Footer() {
                         </div>
 
                         {/* Certificaciones */}
-                        <div className="flex items-center gap-4 justify-end">
+                        <div className="flex justify-center items-center gap-4">
                             <Shield size={24} />
                             <span className="text-sm">Certificado SSL</span>
                         </div>

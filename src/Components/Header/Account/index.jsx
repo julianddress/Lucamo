@@ -1,34 +1,28 @@
-import React from "react";
-import "./Account.css";
-import Profile from "../../../assets/img/profile.svg"
-import Cart from "../../../assets/img/shoppingCart.svg"
-import { useCart } from "../../../Context/CartContext";
+import { User } from 'lucide-react';
 
-const Account = () =>{
-
-    const {count} = useCart();
+const Account = () => {
 
     return (
+        <div
+        className="w-max flex items-center justify-self-end gap-4
+                    md:gap-2
+                    "
+        >
 
-                <div className="navbar__account-container padauk-bold">
-
-                    <div className="navbar__shoppingcart">
-                        <span className="navbar__shoppingcart-count">{count}</span>
-                        <a href="# " className="navbar__shoppingcart-link">
-                            <img src={Cart} alt="Shopping Cart" className="navbar__shoppingcart-image"/>
-                        </a>
-                    </div>
-                    
-                    <div className="navbar__account">
-                        <span className="navbar__username">Hola,<br/>Julian</span>
-                        <a href="# " className="navbar__account-link">
-                            <img src={Profile} alt="User account" className="navbar__account-img" />
-                        </a>
-                    </div>
-
-                </div>
-
-    )
+            {/* User Account */}
+            <div className="flex items-center gap-2">
+                <span
+                className="text-white text-center text-sm leading-4
+                            lg:text-lg md:leading-5 lg:leading-6"
+                >
+                    Bienvenido,<br />Julian
+                </span>
+                <a href="# " className="text-center ">
+                    <User size={34} color="white" className='md:size-11 xl:size-13' />
+                </a>
+            </div>
+        </div>
+    );
 };
 
-export {Account};
+export { Account };

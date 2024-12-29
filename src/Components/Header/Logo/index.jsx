@@ -1,26 +1,34 @@
-import React from "react";
-import "./Logo.css"
-import LucamoLogo from "../../../assets/img/logo.svg"
-import menu from "../../../assets/img/menu.svg"
+import LucamoLogo from "../../../assets/img/logo.svg";
+import { Menu } from 'lucide-react';
 
-const Logo = () =>{
-
-    return ( 
-    
-            <div className="navbar__logo-container">
-                <div className="navbar__menu">
-                    <a href="# " className="navbar__menu-link">
-                        <img src={menu} alt="Menu de productos" className="navbar__menu-image"></img>
-                    </a>
-                </div>
-                <div className="navbar__logo">
-                    <a href="# " className="navbar__logo-link">
-                        <img src={LucamoLogo} alt="Company Logo" className="navbar__logo-img" />
-                    </a>
-                </div>
+const Logo = () => {
+    return (
+        <div className="flex w-fit items-center gap-2 justify-self-start
+                        "
+        >
+            <div className="block md:hidden self-end
+                            "
+            >
+                <button href="# " className="">
+                    <Menu       
+                        size={24}
+                        color="white"
+                    />
+                </button>
             </div>
-
-    )
+            <div className="w-3/6 
+                            md:w-4/5"
+            >
+                <a href="# " className="block">
+                    <img
+                        src={LucamoLogo}
+                        alt="Lucamo Logo"
+                        className="w-full"
+                    />
+                </a>
+            </div>
+        </div>
+    );
 };
 
-export {Logo};
+export { Logo };
