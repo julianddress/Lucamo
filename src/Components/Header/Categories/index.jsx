@@ -15,7 +15,7 @@ const Categories = () => {
                     <button
                         className="px-4 py-2  text-white rounded-xl w-min "
                         onClick={() => HandleButtonClick(1)}
-                        style={{ backgroundColor: ActiveButton === 1 ? 'orange' : 'inherit', 
+                        style={{ backgroundColor: ActiveButton === 1 ? '#7e22ce' : 'inherit', 
                                 fontWeight: ActiveButton === 1 ? 'bold' : 'normal', 
                                 transition: 'all 0.3s ease'
                         }}
@@ -32,7 +32,7 @@ const Categories = () => {
                     <button
                         className="px-4 py-2  text-white rounded-xl"
                         onClick={() => HandleButtonClick(2)}
-                        style={{ backgroundColor: ActiveButton === 2 ? 'orange' : 'inherit' ,
+                        style={{ backgroundColor: ActiveButton === 2 ? '#7e22ce' : 'inherit' ,
                                 fontWeight: ActiveButton === 2 ? 'bold' : 'normal',
                                 transition: 'all 0.3s ease'
                         }}

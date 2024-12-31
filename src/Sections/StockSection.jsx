@@ -1,6 +1,5 @@
 import React from "react";
-import { HomeProducts } from "../Components/HomeProducts";
-import { CartLogo } from "../Components";
+import { HomeProducts } from "../Components/index";
 import ProductCardDetails from "../Components/ProductCardDetails"; 
 import {useProductDetails} from "../Context/useProductDetails"
 
@@ -11,8 +10,7 @@ const StockSection = () => {
 
     return (
         <section className="relative bg-[var(--background-color-secondario)]">
-            <CartLogo />
-            <div className="p-4">
+            <div className="p-4 flex justify-center">
                 <HomeProducts onShowDetails={openDetails} />
                 {showDetails && <ProductCardDetails onCloseDetails={closeDetails} />}
             </div>
