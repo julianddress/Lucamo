@@ -32,16 +32,28 @@ export function Footer() {
                                     con la mejor calidad y servicio.
                                 </p>
                             <div className="flex gap-4">
-                                <a href="https://www.facebook.com/profile.php?id=61553406257588" className="hover:text-blue-400 transition-colors" target='_blank' rel='noreferrer'>
+                                <a href="https://www.facebook.com/profile.php?id=61553406257588" 
+                                    className="hover:text-blue-400 transition-colors" 
+                                    target='_blank' 
+                                    rel='noreferrer'
+                                    aria-label='Visita nuestro Facebook'>
                                 <Facebook size={20} />
                                 </a>
-                                <a href="https://www.instagram.com/impolujos_led?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" className="hover:text-pink-400 transition-colors" target='_blank' rel='noreferrer'>
+                                <a href="https://www.instagram.com/impolujos_led?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" 
+                                    className="hover:text-pink-400 transition-colors" 
+                                    target='_blank' 
+                                    rel='noreferrer'
+                                    aria-label='Visita nuestro Instagram'>
                                 <Instagram size={20} />
                                 </a>
-                                <a href="#" className="hover:text-blue-300 transition-colors">
+                                <a href="#" 
+                                    className="hover:text-blue-300 transition-colors"
+                                    aria-label='Visita nuestro Twitter'>
                                 <Twitter size={20} />
                                 </a>
-                                <a href="#" className="hover:text-blue-500 transition-colors">
+                                <a href="#" 
+                                    className="hover:text-blue-500 transition-colors"
+                                    aria-label='Visita nuestro Linkedin'>
                                 <Linkedin size={20} />
                                 </a>
                             </div>
@@ -123,7 +135,7 @@ export function Footer() {
                     onClick={scrollToTop}
                     className="fixed bottom-8 right-8 p-2 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-colors"
                 >
-                    <ArrowUp size={24} />
+                    <ArrowUp size={24} aria-label='Ir al inicio de la pagina' />
                 </button>
             </footer>
         );

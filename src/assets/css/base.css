@@ -1,5 +1,21 @@
 @import url(_reset.css);
 @import url(_variables.css);
-@import url(_fonts.css);
-@import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Luckiest+Guy&family=Padauk:wght@400;700&family=Phudu:wght@300..900&display=swap');
 
+@keyframes loadingBar {
+    0% {
+        width: 0%;
+        opacity: 0.5;
+    }
+    50% {
+        width: 100%;
+        opacity: 1;
+    }
+    100% {
+        width: 0%;
+        opacity: 0.5;
+    }
+}
+
+.animate-loading-bar {
+    animation: loadingBar 3s ease-in-out infinite;
+}

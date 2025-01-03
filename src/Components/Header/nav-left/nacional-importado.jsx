@@ -9,18 +9,19 @@ const Categories = () => {
     }
 
     return (
-        <div className="col-span-2 justify-self-center hidden lg:flex items-center">
+        <div className="col-span-2  hidden lg:flex items-center">
             <ul className="flex gap-2 list-none items-center">
                 <li>
                     <button
-                        className="px-4 py-2  text-white rounded-xl w-min "
+                        className="px-3 py-1  text-white rounded-xl w-min "
                         onClick={() => HandleButtonClick(1)}
                         style={{ backgroundColor: ActiveButton === 1 ? '#7e22ce' : 'inherit', 
                                 fontWeight: ActiveButton === 1 ? 'bold' : 'normal', 
-                                transition: 'all 0.3s ease'
+                                border: ActiveButton === 1 ? 'normal' : 'solid 2px #10385e', 
+                                transition: 'all 0.3s ease',
                         }}
                     >
-                        <a href="# " className="lg:text-sm xl:text-base">
+                        <a href="# " className="lg:text-xs">
                             PRODUCTOS LOCALES
                         </a>
                     </button>
@@ -34,10 +35,11 @@ const Categories = () => {
                         onClick={() => HandleButtonClick(2)}
                         style={{ backgroundColor: ActiveButton === 2 ? '#7e22ce' : 'inherit' ,
                                 fontWeight: ActiveButton === 2 ? 'bold' : 'normal',
+                                border: ActiveButton === 1 ? 'normal' : 'solid 2px #10385e', 
                                 transition: 'all 0.3s ease'
                         }}
                     >
-                        <a href="# " className="lg:text-sm xl:text-base">
+                        <a href="# " className="lg:text-sm">
                             IMPORTADOS
                         </a>
                     </button>
@@ -47,4 +49,4 @@ const Categories = () => {
     );
 };
 
-export { Categories };
+export default Categories;

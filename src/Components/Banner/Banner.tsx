@@ -42,7 +42,6 @@ export function Banner({items}: CarouselProps){
 
     return (
             <div className="relative w-full h-[15rem] sm:h-[24rem] lg:h-[32rem] overflow-hidden bg-[var(--background-color-banner)] ">
-            
                 <div
                     className="flex h-full transition-transform duration-500 ease-in-out"
                     style={{ transform: `translateX(-${currentIndex * 100}%)` }}
@@ -52,11 +51,11 @@ export function Banner({items}: CarouselProps){
                         key={index}
                         className="min-w-full h-full"
                     >
-                        <div className="w-full pt-6 leading-7">
-                            <h2 className="text-[1.5rem] md:text-[2.5rem] text-center text-[aliceblue] luckiestguy">
+                        <div className="w-full pt-6 leading-7 md:leading-8">
+                            <h2 className="text-[1.5rem] md:text-[2.5rem] text-center text-[aliceblue] font-luckiest">
                             {item.title}
                             </h2>
-                            <h3 className="text-[1rem] text-center text-[aliceblue]/70">
+                            <h3 className="text-[0.85rem] text-center text-[aliceblue]/70 font-hammersmith">
                             {item.subtitle}
                             </h3>
                         </div>

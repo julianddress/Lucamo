@@ -1,10 +1,10 @@
-'use client'
-
 import { useCart } from '../../Context/CartContext'
 import { Eye, Tag } from 'lucide-react'
 import { Card, CardContent } from "../../Components/UI/Card"
 import {ImageCard} from "../../Components/UI/ImageCard"
 import { Badge } from "../../Components/UI/Badge"
+import { useNavigate} from 'react-router-dom'
+import { useAuth } from '@/Context/AuthContext'
 
 //  # Subcomponente para cada producto
 
@@ -28,6 +28,20 @@ export default function ProductCard({
 
     const { incrementCart } = useCart();
 
+    const { user } = useAuth(); // Verifica el estado del usuario
+    const navigate = useNavigate();
+
+    const handleAddToCart = () => {
+        if (!user) {
+            // Si el usuario no está autenticado, redirige al inicio de sesión
+            navigate('/signin');
+        } else {
+            // Si está autenticado, añade al carrito
+            incrementCart();
+            if (onAdd) onAdd(); // Callback 
+        }
+    };
+
     return  <> 
                 <Card className="group relative overflow-hidden transition-all hover:shadow-lg h-25 w-15">
 
@@ -38,9 +52,7 @@ export default function ProductCard({
                             variant="destructive" 
                             className="absolute left-2 top-2 z-10"
                         >
-                            <Tag className="w-4 h-4 mr-1
-                                            lg:w-8 lg:h-6 lg:mr-2" 
-                            />
+                            <Tag className="w-4 h-4 mr-1 lg:w-8 lg:h-6 lg:mr-2" />
                                 {discount}
                         </Badge>
                         )}
@@ -72,13 +84,13 @@ export default function ProductCard({
                                         sm:gap-1
                                         lg:grid-cols-3 lg:p-5 lg:gap-2"
                         >
-                            <h3 className="text-xs font-bold text-gray-950 line-clamp-2 text-center padauk-bold
+                            <h3 className="text-xs font-bold text-gray-950 line-clamp-2 text-center
                                         sm:col-span-3
-                                        lg:text-2xl"
+                                        lg:text-3xl"
                             >
                                 {title}
                             </h3>
-                            <div className="self-center w-max col-span-1 row-span-1 items-center rounded-full bg-emerald-50 px-2.5 py-1 text-sm font-semibold text-emerald-600 
+                            <div className="self-center w-max col-span-1 row-span-1 items-center rounded-xl bg-green-200 px-2.5 py-1 text-sm font-semibold text-slate-900 
                                         sm:text-base sm:px-3 sm:py-1.5 sm:col-span-2
                                         lg:text-2xl lg:px-4 lg:py-2 lg:col-span-2"
                             >
@@ -90,9 +102,9 @@ export default function ProductCard({
                                 className="hidden h-8 px-3 w-max text-white rounded-lg bg-green-700 backdrop-blur hover:bg-green-900
                                         sm:h-6 sm:px-1 sm:rounded-md sm:block
                                         lg:justify-self-end lg:w-full lg:h-9"
-                                onClick={onAdd}
+                                onClick={handleAddToCart}
                             >
-                                <span className="sm:text-xs lg:text-2xl" onClick={incrementCart} > 
+                                <span className="sm:text-xs lg:text-xl" onClick={incrementCart} > 
                                     Añadir
                                 </span>
                             </button>
