@@ -1,14 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/Components/UI/button';
 import { supabase } from "@/Supabase/supbaseClient";
 import { useAuth } from '@/Context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 function GoogleSignIn() {
-    
+
+    const navigate = useNavigate()
+    const [loading, setLoading] = useState('');
     const { loginWithGoogle } = useAuth();
 
-    const handleGoogleLogin = () => {
-        loginWithGoogle();
+    const handleGoogleLogin = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        try 
+        {
+            const result = await loginWithGoogle();
+            if (result.success) {
+                navigate('/')
+            }
+        } catch (err) {
+            console.error("An unexpected error occurred");
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -22,7 +37,7 @@ function GoogleSignIn() {
                 alt="Google"
                 className="w-5 h-5 mr-2"
             />
-            Iniciar sesión con Google
+            Continuar con Google
         </Button>
     );
 }

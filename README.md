@@ -4,7 +4,7 @@
 
 Este es un proyecto de aplicación de comercio electrónico construido con React. ¡Próximamente estará disponible para el público! 🎉
 
-# React + TypeScript + Tailwind + Vite 
+# React + Vite + Supabase + TypeScript + Tailwind 
 
 ---
 

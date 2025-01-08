@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
-import EmailSignIn from '../Components/Auth/EmailSignIn';
+import EmailSignUp from '../Components/Auth/EmailSignUp';
 import GoogleSignIn from '../Components/Auth/GoogleSignIn';
-import { useNavigate } from 'react-router-dom';
 
-const SignIn = () => {
+const SignUp = () => {
 
     return (
         <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-violet-500 via-indigo-500 to-violet-500">
@@ -12,9 +11,9 @@ const SignIn = () => {
 
                     {/* Left side content */}
                     <div className="hidden lg:flex flex-col text-white space-y-6 p-8">
-                        <h1 className="text-5xl font-bold">Bienvenido !</h1>
+                        <h1 className="text-5xl font-bold">Explora nevos caminos !</h1>
                         <p className="text-xl opacity-90">
-                            Accede a tu cuenta y continua tu viaje con nosotros.
+                            Registrate y experimenta un nuevo viaje con nosotros.
                         </p>
                         <div className="relative mt-12">
                             {/* Decorative elements */}
@@ -33,24 +32,21 @@ const SignIn = () => {
                     {/* Right side */}
                     <div className="w-full max-w-md mx-auto">
                         <div className="bg-white rounded-2xl shadow-xl p-8">
-                            <h2 className="text-2xl font-semibold text-gray-800 mb-6">Accede a tu cuenta</h2>
-                            <EmailSignIn />
+                            <h2 className="text-2xl font-semibold text-gray-800 mb-6">Registrate</h2>
+                            <EmailSignUp />
                             <div className="relative my-6">
                                 <div className="absolute inset-0 flex items-center">
                                     <div className="w-full border-t border-gray-200"></div>
                                 </div>
                                 <div className="relative flex justify-center text-sm">
-                                    <span className="px-2 bg-white text-gray-500">Or continue with</span>
+                                    <span className="px-2 bg-white text-gray-500">Ya tienes una cuenta?</span>
                                 </div>
                             </div>
                             <GoogleSignIn />
                             <div className="text-center space-y-2 mt-4">
-                                <a href="#" className="text-sm text-gray-600 hover:text-purple-600">
-                                    Olvidaste tu clave / contraseña?
-                                </a>
-                                <div className="border-t border-gray-100 pt-4">
-                                    <a href="/signup" className="text-purple-600 hover:text-purple-700 font-medium">
-                                        Crea tu cuenta →
+                                <div className="border-t border-gray-100">
+                                    <a href="/signin" className="text-purple-600 hover:text-purple-700 font-medium">
+                                        Iniciar sesion →
                                     </a>
                                 </div>
                             </div>
@@ -62,4 +58,4 @@ const SignIn = () => {
     );
 };
 
-export default SignIn;
+export default SignUp;

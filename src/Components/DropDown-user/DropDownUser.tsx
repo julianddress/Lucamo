@@ -15,12 +15,19 @@ import { ChevronRight } from 'lucide-react';
 function DropDownUser() {
 
     const navigate = useNavigate();
-
-    const { logout, user } = useAuth();
-    const handleUser = () => user ? logout() : navigate('/signin');
-
+    const { logout, session } = useAuth();
     const [title, setTitle] = useState(''); 
-    useEffect(() => { setTitle( user ? 'Cerrar sesión' : 'Iniciar sesión');}, [navigate, user]);
+
+    const handleSignout = async () => {
+        try {
+            await logout();
+            navigate('/signin')
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    useEffect(() => { setTitle( session?.user ? 'Cerrar sesión' : 'Iniciar sesión') }, [session]);
 
     return (
         <DropdownMenu>
@@ -38,7 +45,7 @@ function DropDownUser() {
                 <DropdownMenuItem>Team</DropdownMenuItem>
                 <DropdownMenuItem>Subscription</DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem  onClick={handleUser}>{title}</DropdownMenuItem>
+                <DropdownMenuItem  onClick={handleSignout}>{title}</DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
     );

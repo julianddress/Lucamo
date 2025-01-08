@@ -1,7 +1,6 @@
 // AuthContext.js
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { supabase } from '@/Supabase/supbaseClient'; 
-import { useNavigate } from 'react-router-dom';
+import { supabase } from '@/Supabase/supbaseClient';
 
 const AuthContext = createContext();
 
@@ -9,61 +8,102 @@ export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
 
-    const [user, setUser] = useState(null); 
-    const [loading, setLoading] = useState(true);  // Variable para mostrar un spinner mientras se carga la autenticación
+    const [session, setSession] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
 
-    const navigate = useNavigate();
-
-    // Verificar si el usuario está autenticado
+    // Obtener la sesión
     useEffect(() => {
-        async function getUserData() {
-            await supabase.auth.getUser().then((value) =>{
-                if(value.data?.user){
-                    setUser(value.data.user);
-                    setLoading(false);  // Finaliza la carga después de verificar el usuario
-                    navigate('/');
-                }
-            })
-        }
-        getUserData();
-    }, [navigate]);
+        supabase.auth.getSession().then(({ data: { session } }) => {
+            setSession(session);
+            setLoading(false);
+        })
 
-    const login = (userData) => setUser(userData);
+        supabase.auth.onAuthStateChange(({ _event, session }) => {
+            if (_event === 'SIGNED_IN') {
+                setSession(session);
+            } else if (_event === 'SIGNED_OUT') {
+                setSession(session);
+            }
+        })
+    }, []);
+
+    // Función para iniciar sesion 
+    const SignInUser = async (email, password) => {
+
+        try {
+            const { data, error } = await supabase.auth.signInWithPassword({
+                email,
+                password,
+            });
+
+            if (error) {
+                console.error('hubo un error al iniciar sesion: ', error);
+                return { success: false, error: error.message }
+            }
+
+            return { success: true, data }
+        }
+        catch (error) {
+            console.error("an error occured: ", error)
+        }
+    };
+
+    // Función para registrarse 
+    const SignUpNewUser = async (email, password, FirstName, LastName) => {
+        const { data, error } = await supabase.auth.signUp({
+            email,
+            password,
+            options: {
+                data: {
+                    FirstName,
+                    LastName,
+                }
+            }
+            // options: { emailRedirectTo: 'http://localhost:3000/' },
+        });
+
+        if (error) {
+            console.error('hubo un error al registrarse: ', error);
+            return { success: false, error }
+        }
+
+        return { success: true, data }
+    };
 
     // Función para iniciar sesión con Google
     const loginWithGoogle = async () => {
-        try {
-            const { data, error } = await supabase.auth.signInWithOAuth({
-                provider: 'google',
-            });
-    
-            if (error) {
-                console.error('Error de inicio de sesión:', error.message);
-            } else {
-                console.log('Inicio de sesión con Google exitoso');
-                
-                // Recuperar el usuario actual desde Supabase
-                const { data: userData } = await supabase.auth.getUser();
-                setUser(userData.user); // Establecer el usuario
-                navigate('/'); // Redirigir a Home
-            }
-        } catch (error) {
-            console.error('Error al intentar iniciar sesión con Google:', error.message);
-        }
-    };
-    
+        const { data, error } = await supabase.auth.signInWithOAuth({
+            provider: 'google',
+        });
 
-    // Función para logout
+        if (error) {
+            console.error('hubo un error al iniciar sesion: ', error);
+            return { success: false, error }
+        }
+
+        return { success: true, data }
+    };
+
+    // Función para cerrar sesion
     const logout = async () => {
         await supabase.auth.signOut();
-        setUser(null); 
-        setLoading(false);
-        navigate('/');  
+        setSession(null);
+    };
+
+    // variables del contexto
+    const value = {
+        session,
+        setSession,
+        SignInUser,
+        SignUpNewUser,
+        loginWithGoogle,
+        logout,
     };
 
     return (
-        <AuthContext.Provider value={{ user, loading, login, loginWithGoogle, logout }}>
+        <AuthContext.Provider value={value}>
             {children}
         </AuthContext.Provider>
     );
-};
+}

@@ -4,13 +4,14 @@ import { useAuth } from '@/Context/AuthContext';
 
 const NavRight = () => {
 
-    const { user } = useAuth();
-    const [title, setTitle] = useState(''); // Estado para el título del producto
+    const { session } = useAuth();
+    const [title, setTitle] = useState(''); 
 
     useEffect(() => {
-        const userName = user?.user_metadata?.name?.split(' ')[0];
-        setTitle(user ? `Hola, ${userName}` : 'Identificate');
-    }, [user]);    
+        console.log(session)
+        const userName = session?.user?.user_metadata?.FirstName;
+        setTitle( session?.user ? `Hola, ${userName}` : 'Identificate');
+    }, [session]);    
 
     return (
         <div className="overflow-hidden flex items-center justify-end gap-4 md:gap-2 lg:col-span-1">

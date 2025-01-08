@@ -28,11 +28,11 @@ export default function ProductCard({
 
     const { incrementCart } = useCart();
 
-    const { user } = useAuth(); // Verifica el estado del usuario
+    const { session } = useAuth(); // Verifica el estado del usuario
     const navigate = useNavigate();
 
     const handleAddToCart = () => {
-        if (!user) {
+        if (!session) {
             // Si el usuario no está autenticado, redirige al inicio de sesión
             navigate('/signin');
         } else {
