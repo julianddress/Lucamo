@@ -5,7 +5,7 @@ import {
     DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-} from "@/Components/UI/dropdown-menu";
+} from "@/Components/Shared/UI/dropdown-menu";
 import { User } from "lucide-react";
 import { useAuth } from "@/Context/AuthContext";
 import { useEffect, useState } from "react";

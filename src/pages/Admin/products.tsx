@@ -1,4 +1,4 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/Components/UI/tabs"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/Components/Shared/UI/tabs"
 import { ProductListSection } from "@/Sections/Admin/Products/ProductList";
 import { FeaturedProductsSection } from "@/Sections/Admin/Products/FeaturedProducts";
 import { CreateProductSection } from "@/Sections/Admin/Products/CreateProduct";

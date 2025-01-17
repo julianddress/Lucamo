@@ -1,8 +1,8 @@
 import { useCart } from '../../../Context/CartContext'
 import { Eye, Tag } from 'lucide-react'
-import { Card, CardContent } from "../../UI/Card"
-import {ImageCard} from "../../../Components/UI/ImageCard"
-import { Badge } from "../../../Components/UI/Badge"
+import { Card, CardContent } from "../../Shared/UI/Card"
+import {ImageCard} from "../../Shared/UI/ImageCard"
+import { Badge } from "../../Shared/UI/Badge"
 import { useNavigate} from 'react-router-dom'
 import { useAuth } from '@/Context/AuthContext'
 

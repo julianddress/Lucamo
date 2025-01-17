@@ -1,113 +1,86 @@
-import { useState } from 'react'
-import { Plus } from 'lucide-react'
-import { Button } from "@/Components/UI/button"
-import { Card, CardContent } from "@/Components/UI/Card"
-import { Input } from "@/Components/UI/input"
-import { Label } from "@/Components/UI/label"
-import { Textarea } from "@/Components/UI/textarea"
-import { Switch } from "@/Components/UI/switch"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/Components/UI/select"
+import { Button } from "@/Components/Shared/UI/button";
+import { Card, CardContent } from "@/Components/Shared/UI/Card";
+import { AddImages } from "@/Components/Admin/addImages/AddImages";
+import { Form } from "@/Components/Admin/Form/Form";
+import { Categories } from "@/Components/Admin/Categories/Categories";
+import { SuccessAlert } from "@/Components/Shared/Alerts/SuccessAlert";
+import { ErrorAlert } from "@/Components/Shared/Alerts/ErrorAlert";
+import { InfoAlert } from "@/Components/Shared/Alerts/InfoAlert";
+import { LoadingAlert } from "@/Components/Shared/Alerts/LoadingAlert";
+import { useAlert } from "@/Context/AlertContext";
+import { useCreateProduct } from "@/Hooks/Admin/useCreateProduct";
+import { useState } from "react";
 
 export function CreateProductSection() {
-    const [images, setImages] = useState<string[]>([])
 
-    const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const files = e.target.files
-        if (files) {
-        const newImages = Array.from(files).map(file => URL.createObjectURL(file))
-        setImages(prev => [...prev, ...newImages].slice(0, 4))
+    const [images, setImages] = useState<string[]>([]);
+    const { handleFormChange, handleCategoryChange, createProduct, loading } = useCreateProduct(images);
+
+    const { successMessage, showLoadingAlert, errorMessage, loadingMessage, infoMessage, showErrorAlert, loadingAlertVisible, successAlertVisible, errorAlertVisible, infoAlertVisible  } = useAlert();
+
+    const handleFormSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        try {
+            await createProduct();
+            showLoadingAlert(loadingMessage)
+        } catch (error) {
+
+            console.log(error)
+            if (error instanceof Error) {
+                showErrorAlert(error.message || "Ha ocurrido un error al crear el producto");
+            } else {
+                showErrorAlert("Ha ocurrido un error al crear el producto");
+            }
         }
-    }
+    };
 
     return (
-        <Card>
-            <CardContent className="pt-6">
-                <form className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div className="space-y-2">
-                        <Label htmlFor="images">Product Images (Max 4)</Label>
-                        <div className="grid grid-cols-2 gap-4">
-                            {Array(4).fill(0).map((_, i) => (
-                            <div key={i} className="aspect-square relative border rounded-lg overflow-hidden">
-                                {images[i] ? (
-                                <img 
-                                    src={images[i]} 
-                                    alt={`Product image ${i + 1}`} 
-                                    className="object-cover w-full h-full"
-                                />
-                                ) : (
-                                <div className="w-full h-full flex items-center justify-center bg-muted">
-                                    <Plus className="h-6 w-6 text-muted-foreground" />
-                                </div>
-                                )}
-                            </div>
-                            ))}
-                        </div>
-                        <Input 
-                            id="images" 
-                            type="file" 
-                            accept="image/*" 
-                            multiple 
-                            onChange={handleImageUpload}
-                            className="mt-2"
+            <Card>
+                <div className="fixed left-[70%] top-[5%] flex flex-col gap-2">
+                    {loadingAlertVisible && (
+                        <LoadingAlert
+                            title="Cargando !"
+                            description={loadingMessage || "Por favor espere"}
+                            className=""
                         />
+                    )}
+                    {successAlertVisible && (
+                        <SuccessAlert
+                            title="Success!"
+                            description={successMessage || "Producto creado con exito."}
+                            className=""
+                        />
+                    )}
+                    {errorAlertVisible && (
+                        <ErrorAlert
+                            title="Ocurrió un error!"
+                            description={errorMessage || "Ups, algo salió mal."}
+                            className=""
+                        />
+                    )}
+                    {infoAlertVisible && (
+                        <InfoAlert
+                            title="Info Alert!"
+                            description={infoMessage || "Head's up"}
+                            className=""
+                        />
+                    )}
+                </div>
+                <CardContent className="pt-6">
+                    <form className="space-y-6" onSubmit={handleFormSubmit}>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <AddImages onImagesChange={setImages} />
+                            <Form onChange={handleFormChange}>
+                                <Categories onSelect={handleCategoryChange} />
+                            </Form>
                         </div>
-
-                        <div className="space-y-4">
-                        <div>
-                            <Label htmlFor="reference">Reference</Label>
-                            <Input id="reference" placeholder="Enter product reference" />
+                        <div className="py-5">
+                            <Button type="submit" className="w-full" disabled={loading}>
+                                Crear Producto
+                            </Button>
                         </div>
-                        <div>
-                            <Label htmlFor="name">Name</Label>
-                            <Input id="name" placeholder="Enter product name" />
-                        </div>
-                        <div>
-                            <Label htmlFor="quantity">Quantity</Label>
-                            <Input id="quantity" type="number" min="0" placeholder="Enter quantity" />
-                        </div>
-                        </div>
-                    </div>
-
-                    <div className="space-y-4">
-                        <div>
-                        <Label htmlFor="description">Description</Label>
-                        <Textarea id="description" placeholder="Enter product description" />
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div>
-                            <Label htmlFor="price">Price</Label>
-                            <Input id="price" type="number" min="0" step="0.01" placeholder="Enter price" />
-                        </div>
-                        <div>
-                            <Label htmlFor="discount">Discount (%)</Label>
-                            <Input id="discount" type="number" min="0" max="100" placeholder="Enter discount" />
-                        </div>
-                        <div>
-                            <Label htmlFor="category">Category</Label>
-                            <Select>
-                            <SelectTrigger>
-                                <SelectValue placeholder="Select category" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                <SelectItem value="nacional">Nacional</SelectItem>
-                                <SelectItem value="importado">Importado</SelectItem>
-                            </SelectContent>
-                            </Select>
-                        </div>
-                        </div>
-
-                        <div className="flex items-center space-x-2">
-                        <Switch id="featured" />
-                        <Label htmlFor="featured">Featured Product</Label>
-                        </div>
-
-                        <Button type="submit" className="w-full">Create Product</Button>
-                    </div>
-                </form>
-            </CardContent>
-        </Card>
-    )
+                    </form>
+                </CardContent>
+            </Card>
+    );
 }
-

@@ -1,7 +1,7 @@
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/Components/UI/table"
-import { Button } from "@/Components/UI/button"
-import { Card, CardContent } from "@/Components/UI/Card"
-import { Switch } from "@/Components/UI/switch"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/Components/Shared/UI/table"
+import { Button } from "@/Components/Shared/UI/button"
+import { Card, CardContent } from "@/Components/Shared/UI/Card"
+import { Switch } from "@/Components/Shared/UI/switch"
 
 export function FeaturedProductsSection() {
     return (

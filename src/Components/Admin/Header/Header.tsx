@@ -1,5 +1,5 @@
-import { Input } from "../../UI/input";
-import { Button } from "../../UI/button";
+import { Input } from "../../Shared/UI/input";
+import { Button } from "../../Shared/UI/button";
 import { Search } from 'lucide-react'
 
 interface HeaderProps {

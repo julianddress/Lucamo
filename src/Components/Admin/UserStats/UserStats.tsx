@@ -1,5 +1,5 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/Components/UI/avatar"
-import { Card, CardContent, CardHeader, CardTitle } from "@/Components/UI/Card"
+import { Avatar, AvatarFallback, AvatarImage } from "@/Components/Shared/UI/avatar"
+import { Card, CardContent, CardHeader, CardTitle } from "@/Components/Shared/UI/Card"
 import { MessageCircle, Share2, Heart, UsersRound } from 'lucide-react'
 import WomenIcon from "../../../assets/img/womenIcon.png"
 

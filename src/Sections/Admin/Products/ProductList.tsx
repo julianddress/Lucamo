@@ -1,7 +1,7 @@
 import { Pencil, Trash2, Star } from 'lucide-react'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/Components/UI/table"
-import { Button } from '@/Components/UI/button'
-import { Card, CardContent } from '@/Components/UI/Card'
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/Components/Shared/UI/table"
+import { Button } from '@/Components/Shared/UI/button'
+import { Card, CardContent } from '@/Components/Shared/UI/Card'
 
 export function ProductListSection() {
     return (

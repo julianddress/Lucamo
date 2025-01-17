@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/Components/UI/Card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/Components/Shared/UI/Card"
 import { ActivityChart } from "@/Components/Admin/ActivityChart/Activitychart"
 import { SalesChart } from "@/Components/Admin/SalesChart/Saleschart"
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Input } from '@/Components/UI/input';
-import { Button } from '@/Components/UI/button';
+import { Input } from '@/Components/Shared/UI/input';
+import { Button } from '@/Components/Shared/UI/button';
 import { UserIcon, LockIcon } from 'lucide-react';
 import { supabase } from '@/Supabase/supbaseClient';
 import { useNavigate } from 'react-router-dom';

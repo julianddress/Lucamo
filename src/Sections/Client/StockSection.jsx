@@ -1,7 +1,7 @@
 import React from "react";
 import { HomeProducts } from "../../Components/index";
 // import ProductCardDetails from "../../Components/Client/ProductCardDetails"; 
-import {useProductDetails} from "../../Context/useProductDetails"
+import {useProductDetails} from "../../Hooks/Client/useProductDetails"
 
 const StockSection = () => {
 
