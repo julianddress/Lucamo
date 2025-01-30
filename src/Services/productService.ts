@@ -1,15 +1,7 @@
 import { authenticate } from './authService';
 import { supabase } from '@/Supabase/supbaseClient';
 import siigo from '@/Config/siigo';
-
-interface ProductUpdate {
-    id: string;
-    reference: string;
-    name: string;
-    price: number;
-    discount: number;
-    featured: boolean;
-}
+import { Product } from '@/Types/productTypes';
 
 // Función para obtener productos desde una API externa
 export const fetchProductsAPI = async () => {
@@ -39,7 +31,7 @@ export const fetchProductsAPI = async () => {
 };
 
 // Función para actualizar productos en la base de datos de Supabase
-export const updateProducts = async (products: ProductUpdate[]): Promise<void> => {
+export const upsertProducts = async (products: Product[]): Promise<void> => {
     try {
         const updates = products.map(product => ({
             id: product.id,
@@ -49,17 +41,60 @@ export const updateProducts = async (products: ProductUpdate[]): Promise<void> =
             discount: product.discount,
             featured: product.featured,
         }));
-
         const { error } = await supabase
             .from("products")
             .upsert(updates, { onConflict: "id" });
-
+            
         if (error) {
             console.error("Error al actualizar productos:", error);
-        } else {
-            console.log("Productos actualizados correctamente.");
-        }
+        } 
+
     } catch (error) {
         console.error("Error inesperado al actualizar productos:", error);
     }
 };
+
+// Función para traer el inventario de la base de datos de supabase
+export const fetchInventory = async () => {
+    try {
+        const { data, error } = await supabase
+            .from('inventory')
+            .select()
+        
+        if(error) console.error('occurio un error al traer el inventario')
+
+        return data
+    } catch (error) {
+        console.error("Error fue: ", error)
+    }
+}
+
+// Función para traer las categorias de la base de datos de supabase
+export const fetchCategory = async () => {
+    try {
+        const { data, error } = await supabase
+            .from('product_category')
+            .select()
+        
+        if(error) console.error('occurio un error al traer las categorias')
+
+        return data
+    } catch (error) {
+        console.error("Error fue: ", error)
+    }
+}
+
+// Función para traer la tabla images de la base de datos de supabase
+export const fetchImages = async () => {
+    try {
+        const { data, error } = await supabase
+            .from("product_images")
+            .select()
+        
+        if(error)  console.error("Ha ocurrido un problema al traer las images")
+
+        return data
+    } catch (error) {
+        console.error(error);
+    }
+}

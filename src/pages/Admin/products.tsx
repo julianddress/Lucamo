@@ -2,11 +2,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/Components/Shared/UI
 import { ProductListSection } from "@/Sections/Admin/Products/ProductList";
 import { FeaturedProductsSection } from "@/Sections/Admin/Products/FeaturedProducts";
 import { CreateProductSection } from "@/Sections/Admin/Products/CreateProduct";
+import { FormDataProvider } from "@/Context/FormDataContext.js";
 import { AdminLayout } from "@/Layouts/AdminLayout"
 
 export default function products() {
     return (
 
+        <FormDataProvider>
             <AdminLayout>
                 <Tabs defaultValue="products" className="w-full">
                     <TabsList className="grid w-full grid-cols-3">
@@ -28,6 +30,7 @@ export default function products() {
                     </TabsContent>
                 </Tabs>
             </AdminLayout>
+        </FormDataProvider>
 
     );
 }

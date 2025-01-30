@@ -11,8 +11,8 @@ export function SuccessAlert({ title, description, className }: SuccessAlertProp
 
     return (
         
-            <Alert variant="destructive" className={`bg-lime-500 ${className}`}>
-                <BadgeCheck className="h-6 w-6 " />
+            <Alert variant="destructive" className={`bg-lime-500 relative ${className}`}>
+                <BadgeCheck className="h-6 w-6 absolute my-1 mr-3" />
                 <AlertTitle>{title}</AlertTitle>
                 <AlertDescription>{description}</AlertDescription>
             </Alert>

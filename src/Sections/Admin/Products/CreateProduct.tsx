@@ -10,9 +10,11 @@ import { LoadingAlert } from "@/Components/Shared/Alerts/LoadingAlert";
 import { useAlert } from "@/Context/AlertContext";
 import { useCreateProduct } from "@/Hooks/Admin/useCreateProduct";
 import { useState } from "react";
+import { useFormData } from "@/Context/FormDataContext";
 
 export function CreateProductSection() {
 
+    const { resetFormData } = useFormData();
     const [images, setImages] = useState<string[]>([]);
     const { handleFormChange, handleCategoryChange, createProduct, loading } = useCreateProduct(images);
 
@@ -21,11 +23,11 @@ export function CreateProductSection() {
     const handleFormSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
+            showLoadingAlert("Espere por favor")
             await createProduct();
-            showLoadingAlert(loadingMessage)
+            resetFormData()
         } catch (error) {
 
-            console.log(error)
             if (error instanceof Error) {
                 showErrorAlert(error.message || "Ha ocurrido un error al crear el producto");
             } else {
@@ -40,28 +42,28 @@ export function CreateProductSection() {
                     {loadingAlertVisible && (
                         <LoadingAlert
                             title="Cargando !"
-                            description={loadingMessage || "Por favor espere"}
+                            description={loadingMessage}
                             className=""
                         />
                     )}
                     {successAlertVisible && (
                         <SuccessAlert
                             title="Success!"
-                            description={successMessage || "Producto creado con exito."}
+                            description={successMessage }
                             className=""
                         />
                     )}
                     {errorAlertVisible && (
                         <ErrorAlert
                             title="Ocurrió un error!"
-                            description={errorMessage || "Ups, algo salió mal."}
+                            description={errorMessage}
                             className=""
                         />
                     )}
                     {infoAlertVisible && (
                         <InfoAlert
                             title="Info Alert!"
-                            description={infoMessage || "Head's up"}
+                            description={infoMessage}
                             className=""
                         />
                     )}

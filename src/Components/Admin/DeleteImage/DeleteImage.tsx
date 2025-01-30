@@ -8,7 +8,8 @@ interface DeleteImageProps {
 
 export default function DeleteImage({imageUrl, onDelete }: DeleteImageProps) {
 
-    const handleDelete = () =>{
+    const handleDelete = (event?: React.MouseEvent<HTMLDivElement>) =>{
+        event?.preventDefault()
         onDelete(imageUrl);
     } 
 

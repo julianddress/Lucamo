@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Label } from "@/Components/Shared/UI/label";
 import {
     Select,
@@ -7,23 +7,38 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/Components/Shared/UI/select";
+import useForm from "@/Hooks/Admin/useForm";
+import { useFormData } from "@/Context/FormDataContext";
 
-export function Categories({ onSelect }: { onSelect: (category: string, subCategory: string) => void }) {
-    const [category, setCategory] = useState<string>("");
-    const [subCategory, setSubCategory] = useState<string>("");
+interface CategoriesProps {
+    onSelect: (field: string, value: string) => void;
+}
+
+export function Categories({ onSelect }: CategoriesProps) {
+
+    const [category] = useForm();
+    const [categoryies, setCategories] = useState<string>("");
+    const [subCategories, setSubCategories] = useState<string>("");
+    const { FormData } = useFormData();
+
+    // Renderiza para editar un producto
+    useEffect(() => {
+        setCategories(FormData.category)
+        setSubCategories(FormData.sub_category);   
+    }, [ FormData.id, category, FormData.category, FormData.sub_category ]);
 
     const handleCategoryChange = (value: string) => {
-        setCategory(value);
-        setSubCategory(""); // Reset subcategory when category changes
-        onSelect(value, ""); // Pass selected category and empty subcategory to parent
+        setCategories(value);
+        setSubCategories(""); // Reset subcategories when category changes
+        onSelect(categoryies, " ");
     };
 
-    const handleSubCategoryChange = (value: string) => {
-        setSubCategory(value);
-        onSelect(category, value); // Pass category and selected subcategory to parent
+    const handleSubCategoryChange = (value: string ) => {
+        setSubCategories(value);
+        onSelect(categoryies, value);
     };
 
-    const subCategoriesOptions = category === "importado" 
+    const subCategoriesOptions = categoryies === "importado" 
         ? [
             { value: "exploradoras", label: "Exploradoras" },
             { value: "barras", label: "Barras" },
@@ -32,7 +47,7 @@ export function Categories({ onSelect }: { onSelect: (category: string, subCateg
             { value: "farolas", label: "Farolas" },
             { value: "industrial", label: "Industrial" },
         ]
-        : category === "nacional"
+        : categoryies === "nacional"
         ? [
             { value: "caterpillar", label: "Caterpillar" },
             { value: "simoniz", label: "Simoniz" },
@@ -43,21 +58,21 @@ export function Categories({ onSelect }: { onSelect: (category: string, subCateg
         <div className="flex gap-4">
             <div className="flex-1">
                 <Label htmlFor="category">Categoria</Label>
-                <Select value={category} onValueChange={handleCategoryChange}>
+                <Select value={categoryies} onValueChange={handleCategoryChange}>
                     <SelectTrigger className="mt-2 bg-orange-50">
-                        <SelectValue placeholder="Seleccione la categoria" />
+                        <SelectValue placeholder="Seleccione la categoria"  />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent >
                         <SelectItem value="importado">Producto Importado</SelectItem>
                         <SelectItem value="nacional">Producto Nacional</SelectItem>
                     </SelectContent>
                 </Select>
             </div>
             <div className="flex-1">
-                <Label htmlFor="subCategory">Sub categoria</Label>
-                <Select value={subCategory} onValueChange={handleSubCategoryChange} disabled={!category}>
+                <Label htmlFor="subCategory">Subcategoria</Label>
+                <Select value={subCategories} onValueChange={handleSubCategoryChange} disabled={!categoryies}>
                     <SelectTrigger className="mt-2 bg-orange-50">
-                        <SelectValue placeholder="Seleccione la sub categoria" />
+                        <SelectValue placeholder="Seleccione la subcategoria" />
                     </SelectTrigger>
                     <SelectContent>
                         {subCategoriesOptions.map((option) => (

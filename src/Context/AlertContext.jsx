@@ -27,6 +27,10 @@ export const AlertProvider = ({ children }) => {
     // Función para mostrar la alerta de error
     const showErrorAlert = (errorMessage) => {
 
+        // Ocultar alerta de carga si está activa
+        setLoadingAlertVisible(false);
+        setLoadingMessage('');
+        
         setErrorMessage(errorMessage);
         setErrorAlertVisible(true);
         setTimeout(() => setErrorAlertVisible(false), 8000); // Ocultar alerta después de 8 segundos

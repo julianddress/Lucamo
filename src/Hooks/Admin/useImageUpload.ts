@@ -4,18 +4,20 @@ import { useState } from "react";
 import { supabase } from "@/Supabase/supbaseClient";
 import { useAlert } from "@/Context/AlertContext";
 import { v4 as uuidv4 } from "uuid";
+import { useFormData } from "@/Context/FormDataContext";
 
 export const useImageUpload = (onImagesChange: (images: string[]) => void) => {
 
     const [images, setImages] = useState < string[] > ([]);
     const [uploading, setUploading] = useState(false);
+    const {FormData} = useFormData();
     const { showSuccessAlert, showErrorAlert, showInfoAlert, showLoadingAlert } = useAlert();
 
     // Función para manejar el envio de images al bucket
     const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
 
+        e.preventDefault()
         showLoadingAlert("Por favor espere, subiendo imagen..")        
-
         showInfoAlert("No olvides borrar la foto sí no creas el producto")
         
         const files = e.target.files;
@@ -25,7 +27,7 @@ export const useImageUpload = (onImagesChange: (images: string[]) => void) => {
 
             for (const file of Array.from(files)) {
                 const fileName = `${uuidv4()}-${file.name}`;
-                const filePath = `product-images/${fileName}`;
+                const filePath =  `product-images/${FormData.reference}/${fileName}`;
 
                 // Subir archivo al bucket
                 const { error: uploadError } = await supabase.storage
@@ -56,6 +58,8 @@ export const useImageUpload = (onImagesChange: (images: string[]) => void) => {
             setImages(updatedImages);
             onImagesChange(updatedImages);
             setUploading(false);
+
+            console.log("Images es: ", updatedImages)
         }
     };
 
@@ -68,7 +72,7 @@ export const useImageUpload = (onImagesChange: (images: string[]) => void) => {
         onImagesChange(updatedImages);
 
         // Eliminar la imagen del bucket
-        const filePath = `product-images/${imageUrl.split("/").pop()}`; // Generamos el path del archivo
+        const filePath = `product-images/${FormData.reference}/${imageUrl.split("/").pop()}`;
         const { error: deleteError } = await supabase.storage
             .from("product-images")
             .remove([filePath]);
@@ -87,6 +91,6 @@ export const useImageUpload = (onImagesChange: (images: string[]) => void) => {
         }
     };
 
-    return { images, uploading, handleImageUpload, handleDeleteImage };
+    return { images, setImages, uploading, handleImageUpload, handleDeleteImage };
 };
 

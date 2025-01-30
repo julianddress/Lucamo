@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAlert } from "@/Context/AlertContext";
 import { supabase } from "@/Supabase/supbaseClient";
+import { useFormData } from "@/Context/FormDataContext";
 
 export function useCreateProduct(images: string[]) {
 
@@ -10,47 +11,30 @@ export function useCreateProduct(images: string[]) {
     // Estado para la carga 
     const [loading, setLoading] = useState(false);
 
-    // Estados de las variables del form
-    const [formData, setFormData] = useState({
-        reference: "",
-        name: "",
-        quantity: 0,
-        price: 0,
-        discount: "",
-        description: "",
-        category: "",
-        subCategory: "",
-    });
+    // Obtener y establecer los datos del formulario ( Context )
+    const { FormData, setFormData } = useFormData();
 
     // Función para manejar los cambios en el formulario del producto
-    const handleFormChange = (field: string, value: string | number | boolean) => {
-        setFormData((prev) => ({
-            ...prev,
-            [field]: value,
-        }));
-    };
+    const handleFormChange = ( field: string, event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement > ) => {
+        setFormData({[field]: event.target.value});
+    }
 
     // Función para manejar los cambios en las categorias del producto
     const handleCategoryChange = (category: string, subCategory: string) => {
-        setFormData((prev) => ({
-            ...prev,
-            category,
-            subCategory,
-        }));
+        setFormData({category, sub_category: subCategory});
     };
 
     // Función para insertar los datos del producto
     const insertProductData = async () => {
 
-        const { reference, name, price, discount, description } = formData;
         const { data: product, error: productError } = await supabase
             .from("products")
             .insert([{ 
-                reference, 
-                name, 
-                price, 
-                discount, 
-                description 
+                reference: FormData.reference, 
+                name: FormData.name, 
+                price: FormData.price, 
+                discount: FormData.discount, 
+                description: FormData.description 
             }])
             .select("id")
             .single();
@@ -66,10 +50,13 @@ export function useCreateProduct(images: string[]) {
     // Función para insertar los datos en la tabla 'inventory'
     const insertInventoryData = async (productId: string) => {
 
-        const { quantity, reference } = formData;
         const { error: inventoryError } = await supabase
             .from("inventory")
-            .insert([{ id_product: productId, quantity, reference }]);
+            .insert([{ 
+                id_product: productId, 
+                quantity: FormData.quantity, 
+                reference: FormData.reference 
+            }]);
 
         if (inventoryError) {
             showErrorAlert("Error creando la cantidad");
@@ -80,14 +67,13 @@ export function useCreateProduct(images: string[]) {
     // Función para insertar los datos en la tabla 'product_category'
     const insertProductCategoryData = async (productId: string) => {
 
-        const { reference, category, subCategory } = formData;
         const { error: productCategoryError } = await supabase
             .from("product_category")
             .insert([{ 
                 id_product: productId, 
-                category, 
-                reference,
-                sub_category: subCategory 
+                category: FormData.category, 
+                reference: FormData.reference,
+                sub_category: FormData.sub_category, 
             }]);
 
         if (productCategoryError) {
@@ -123,10 +109,9 @@ export function useCreateProduct(images: string[]) {
     const createProduct = async () => {
     
         setLoading(true);
-        
-        const { category, subCategory } = formData;
+
         // Simular la propiedad required para las categorias
-        if ( !category || !subCategory ) {
+        if ( !FormData.category || !FormData.sub_category ) {
             showErrorAlert("No ha seleccionado una categoría o subcategoría");
             setLoading(false);
             return;
@@ -144,7 +129,7 @@ export function useCreateProduct(images: string[]) {
                 await insertProductCategoryData(product.id);
                 await insertImages(product.id);
 
-                showSuccessAlert();
+                showSuccessAlert("Producto creado Exitosamente !");
 
             } else {
                 showErrorAlert("Error creando el producto");
@@ -153,6 +138,7 @@ export function useCreateProduct(images: string[]) {
         } catch (error) {
 
             console.log('el error es: ', error)
+            
             // Verifica y extrae el mensaje del error, usando type assertion en caso de que sea un objeto con 'message'
             const errorMessage = (error instanceof Error || (typeof error === "object" && error !== null)) 
                 ? (error as { message: string }).message 
@@ -170,6 +156,5 @@ export function useCreateProduct(images: string[]) {
     }
 };
 
-
-    return { formData, handleFormChange, handleCategoryChange, createProduct, loading };
+    return { FormData, handleFormChange, handleCategoryChange, createProduct, loading };
 }

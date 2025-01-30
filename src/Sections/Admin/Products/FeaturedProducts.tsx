@@ -7,11 +7,12 @@ import useProducts from "@/Hooks/Admin/useProducts";
 import { SuccessAlert } from "@/Components/Shared/Alerts/SuccessAlert";
 import { ErrorAlert } from "@/Components/Shared/Alerts/ErrorAlert";
 import { LoadingAlert } from "@/Components/Shared/Alerts/LoadingAlert";
+import { InfoAlert } from "@/Components/Shared/Alerts/InfoAlert";
 
 export function FeaturedProductsSection() {
 
-    const [products, loading, setProducts, reloadProducts, sortedProducts, toggleFeatured] = useProducts();
-    const { successMessage, showLoadingAlert, errorMessage, showSuccessAlert, loadingMessage, showErrorAlert, loadingAlertVisible, successAlertVisible, errorAlertVisible  } = useAlert();
+    const [, loading , , reloadProducts, sortedProducts, toggleFeatured, updateFeatureColumn] = useProducts();
+    const { successMessage, showInfoAlert, showLoadingAlert, errorMessage, infoMessage, showSuccessAlert, loadingMessage, infoAlertVisible, showErrorAlert, loadingAlertVisible, successAlertVisible, errorAlertVisible  } = useAlert();
 
     const handleSave = async () => {
 
@@ -20,13 +21,10 @@ export function FeaturedProductsSection() {
         try {
             await updateFeatureColumn();
             showSuccessAlert("Los cambios han sido guardados.");
+            showInfoAlert("No olvides agregar una promoción");
         } catch (error) {
             showErrorAlert("Error al guardar los cambios.", error);
         }
-    };
-
-    const handleReloadProducts = async () => {
-        await reloadProducts();
     };
 
     return (
@@ -53,11 +51,18 @@ export function FeaturedProductsSection() {
                             className=""
                         />
                 )} 
+                {infoAlertVisible && (
+                        <InfoAlert
+                            title="Info Alert!"
+                            description={infoMessage}
+                            className=""
+                        />
+                )}
             </div>
             <CardContent className="pt-6">
                 {loading ? (
                     <LoadingAlert
-                        title="Cargando ..."
+                        title="Cargando los productos ..."
                         description={'Espere por favor'}
                         className=""
                     />
@@ -80,21 +85,22 @@ export function FeaturedProductsSection() {
                                         <TableCell className="text-center pl-0">
                                             <Checkbox
                                                 checked={product.featured}
+                                                className=" bg-violet-100 hover:bg-violet-500"
                                                 onCheckedChange={() => toggleFeatured(product.id)}
                                             />
                                         </TableCell>
                                         <TableCell>{index + 1}</TableCell>
                                         <TableCell>{product.reference}</TableCell>
                                         <TableCell>{product.name}</TableCell>
-                                        <TableCell>${product.price.toFixed(3)}</TableCell>
-                                        <TableCell>{product.discount}%</TableCell>
+                                        <TableCell>{`$ ${product.price}`}</TableCell>
+                                        <TableCell>{`${product.discount}`}</TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>
                         </Table>
                         <div className="block justify-self-end mt-4 gap-2">
                             <Button 
-                                onClick={handleReloadProducts} 
+                                onClick={reloadProducts} 
                                 disabled={loading}
                                 className=""
                             >
