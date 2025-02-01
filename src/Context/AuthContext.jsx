@@ -1,6 +1,9 @@
 // AuthContext.js
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { supabase } from '@/Supabase/supbaseClient';
+import { getClientIp } from '@/lib/getClientIP';
+import { isIpAllowed } from '@/lib/isIpAllowed';
+import { useAdminAuth } from '@/Hooks/Admin/useAdminAuth';
 
 const AuthContext = createContext();
 
@@ -8,6 +11,9 @@ export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
 
+    const {adminSession, setAdminSession, adminData} = useAdminAuth();
+    const [isAdmin, setIsAdmin] = useState(false);
+    const [isAllowed, setIsAllowed] = useState(null);
     const [session, setSession] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
@@ -91,15 +97,29 @@ export const AuthProvider = ({ children }) => {
         setSession(null);
     };
 
-    // variables del contexto
+    // Variables del contexto
     const value = {
+        
+        // Estados
+        adminData,
+        adminSession,
+        isAllowed,
+        loading,
         session,
+    
+        // Setters
+        setAdminSession,
+        setIsAdmin,
+        setIsAllowed,
         setSession,
-        SignInUser,
-        SignUpNewUser,
+    
+        // Funciones sobre la autenticación de los usuarios
         loginWithGoogle,
         logout,
+        SignInUser,
+        SignUpNewUser,
     };
+    
 
     return (
         <AuthContext.Provider value={value}>

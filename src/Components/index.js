@@ -1,7 +1,7 @@
-import {Header} from "./Header";
-import {Banner} from "./Banner/Banner.tsx";
-import {Footer} from "./Footer";
-import { CartLogo } from "./Cart/index.jsx";
-import HomeProducts from "./HomeProducts/HomeProducts.tsx";
+import {Header} from "./Client/Header";
+import {Banner} from "./Client/Banner/Banner.tsx";
+import {Footer} from "./Client/Footer";
+import { CartLogo } from "./Client/Cart/index.jsx";
+import HomeProducts from "./Client/HomeProducts/HomeProducts.tsx";
 
 export {Header, Banner, Footer, CartLogo, HomeProducts};

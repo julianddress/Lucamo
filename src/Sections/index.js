@@ -1,5 +1,5 @@
-import {BannerSection } from "./BannerSection"
-import { FooterSection } from "./FooterSection";
-import {StockSection} from "./StockSection"
+import {BannerSection } from "./Client/BannerSection"
+import { FooterSection } from "./Client/FooterSection";
+import {StockSection} from "./Client/StockSection"
 
 export {BannerSection, StockSection, FooterSection};
