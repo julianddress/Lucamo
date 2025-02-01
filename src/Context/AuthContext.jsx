@@ -3,6 +3,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import { supabase } from '@/Supabase/supbaseClient';
 import { getClientIp } from '@/lib/getClientIP';
 import { isIpAllowed } from '@/lib/isIpAllowed';
+import { useAdminAuth } from '@/Hooks/Admin/useAdminAuth';
 
 const AuthContext = createContext();
 
@@ -10,7 +11,8 @@ export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
 
-    const [adminSession, setAdminSession] = useState(null);
+    const {adminSession, setAdminSession, adminData} = useAdminAuth();
+    const [isAdmin, setIsAdmin] = useState(false);
     const [isAllowed, setIsAllowed] = useState(null);
     const [session, setSession] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -31,61 +33,6 @@ export const AuthProvider = ({ children }) => {
             }
         })
     }, []);
-
-    // Función para obtener la sesion del admin
-    const useAdminAuth = () => {
-
-        useEffect(() => {
-            // Recuperar la sesión del administrador de localStorage al cargar la aplicación
-            const storedSession = JSON.parse(localStorage.getItem('adminSession'));
-            if (storedSession) {
-                setAdminSession(storedSession);
-            }
-            setLoading(false);
-        }, []);
-    }
-
-    // Función para iniciar sesión como administrador
-    const signInAdmin = async (email, password) => {
-        const { data: session, error } = await supabase.auth.signInWithPassword({
-            email,
-            password
-        });
-
-        if (error) {
-            console.error('Error al iniciar sesión:', error.message);
-            return { success: false, error: error.message };
-        }
-
-        // Verificar si el usuario pertenece a la tabla adminUsers
-        const { data: adminData, error: adminError } = await supabase
-            .from('adminUsers')
-            .select('id')
-
-        console.log(" datos del admin", adminData)
-        
-        if (adminError || !adminData) {
-            console.error('Usuario no es administrador:', adminError?.message);
-            return { success: false, error: 'No tienes permisos de administrador.' };
-        }
-
-        // Response de la columa id
-        const adminIds = adminData.map((item) => item.id.toString()); 
-        const isAdmin = adminIds.includes(session?.user?.id);
-
-        // Guardar la sesión en localStorage y actualizar el estado
-        localStorage.setItem('adminSession', JSON.stringify(session));
-        setAdminSession(session);
-
-        return { success: isAdmin };
-    };
-
-    // Función para cerrar sesión manualmente en administrador
-    const signOutAdmin = async () => {
-        await supabase.auth.signOut();
-        localStorage.removeItem('adminSession');
-        setAdminSession(null);
-    };
 
     // Función para iniciar sesion 
     const SignInUser = async (email, password) => {
@@ -154,6 +101,7 @@ export const AuthProvider = ({ children }) => {
     const value = {
         
         // Estados
+        adminData,
         adminSession,
         isAllowed,
         loading,
@@ -161,15 +109,11 @@ export const AuthProvider = ({ children }) => {
     
         // Setters
         setAdminSession,
+        setIsAdmin,
         setIsAllowed,
         setSession,
     
-        // Funciones relacionadas con la autenticación de admin
-        signInAdmin,
-        signOutAdmin,
-        useAdminAuth,
-    
-        // Funciones relacionadas con la autenticación de usuarios
+        // Funciones sobre la autenticación de los usuarios
         loginWithGoogle,
         logout,
         SignInUser,

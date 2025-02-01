@@ -1,20 +1,26 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/Components/Shared/UI/avatar"
 import { Card, CardContent, CardHeader, CardTitle } from "@/Components/Shared/UI/Card"
-import { MessageCircle, Share2, Heart, UsersRound } from 'lucide-react'
+import { MessageCircle, Share2, Heart, Codesandbox } from 'lucide-react'
 import WomenIcon from "../../../assets/img/womenIcon.png"
+import { useAuth } from "@/Context/AuthContext";
+import useProducts from "@/Hooks/Admin/useProducts";
 
 export function UserStats() {
+
+    const { adminSession, adminData } = useAuth();
+    const [products] = useProducts();
+    
     return (
         <Card className="h-full shadow-custom2">
             <CardHeader className="pb-2 h-[50%] justify-center">
                 <div className="flex flex-col items-center text-center gap-3 space-x-4">
-                    <Avatar className="h-120 w-130 rounded-md">
-                        <AvatarImage src={WomenIcon} />
-                        <AvatarFallback>NA</AvatarFallback>
+                    <Avatar className="h-120 w-130 rounded-[40%]">
+                        <AvatarImage src={adminSession?.user?.user_metadata?.picture} />
+                        <AvatarFallback>{WomenIcon}</AvatarFallback>
                     </Avatar>
                     <div>
-                        <CardTitle className="text-xl">Natalia Andrea Rojas</CardTitle>
-                        <p className="text-sm text-muted-foreground">Administrador</p>
+                        <CardTitle className="text-xl">{`${adminData?.first_name} `+`${adminData?.last_name}`}</CardTitle>
+                        <p className="text-sm text-muted-foreground">{adminData?.role}</p>
                     </div>
                 </div>
             </CardHeader>
@@ -25,8 +31,8 @@ export function UserStats() {
                 <CardContent className="h-[40%] flex items-center">
                     <div className="space-y-4">
                         <div className="flex items-center">
-                            <UsersRound className="h-6 w-6 text-sky-600 fill-sky-600" />
-                            <span className="ml-2">45 productos</span>
+                            <Codesandbox className="h-7 w-7 text-sky-600 fill-sky-600 stroke-1 stroke-white" />
+                            <span className="ml-2">{products.length} productos</span>
                         </div>
                         <div className="flex items-center">
                             <Share2 className="h-6 w-6 text-fuchsia-800" />

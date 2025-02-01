@@ -1,4 +1,4 @@
-import { authenticate } from './authService';
+import { authenticate } from './siigoService';
 import { supabase } from '@/Supabase/supbaseClient';
 import siigo from '@/Config/siigo';
 import { Product } from '@/Types/productTypes';

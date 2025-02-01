@@ -2,18 +2,32 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/Context/AuthContext';
 import { isIpAllowed } from '@/lib/isIpAllowed';
+import { getAdminSession } from '@/Services/adminService';
 
-const ProtectedRoute = ({ children }) => {
-    const { setIsAllowed, isAllowed, loading, adminSession, setAdminSession } = useAuth();
+interface ProtectedRouteProps {
+    children: React.ReactNode
+}
+
+const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
+    
+    const { setIsAllowed, isAllowed, loading, adminSession, setAdminSession, setIsAdmin } = useAuth();
     const navigate = useNavigate();
 
-    // Asignar la sesión del admin al localStorage
     useEffect(() => {
-        const storedSession = localStorage.getItem('adminSession');
-        if (storedSession) {
-            setAdminSession(JSON.parse(storedSession));
+
+        // Llama al backend para validar si hay una sesión activa
+        const verifySession = async () => {
+            try {
+                const response = await getAdminSession()
+                setAdminSession(response)
+                setIsAdmin(true);
+            } catch (error) {
+                console.error("Error verificando sesión:", error)
+            }
         }
-    }, [setAdminSession]);
+
+        verifySession()
+    }, [])
 
     // Validar la IP y manejar redirecciones
     useEffect(() => {
@@ -39,8 +53,6 @@ const ProtectedRoute = ({ children }) => {
             checkIpAndRedirect();
         }
     }, [setIsAllowed, navigate, adminSession, loading]);
-
-    console.log('admin is: ', adminSession)
 
     return isAllowed ? children : null;
 };

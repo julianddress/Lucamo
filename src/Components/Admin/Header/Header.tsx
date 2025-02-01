@@ -1,6 +1,6 @@
 import { Input } from "../../Shared/UI/input";
-import { Button } from "../../Shared/UI/button";
 import { Search } from 'lucide-react'
+import DropDownUser from "../DropDown-user/DropDownUser";
 
 interface HeaderProps {
     title?: string; 
@@ -16,9 +16,7 @@ const Header: React.FC<HeaderProps> = ({ title }) => {
                     <Input placeholder="Buscar en lucamo" className="w-[30rem] pl-8 rounded-xl" />
                 </div>
             </div>
-            <Button variant="outline" size="sm">
-                Mi Cuenta
-            </Button>
+            <DropDownUser />
         </header>
     );
 };

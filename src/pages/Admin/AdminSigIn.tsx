@@ -1,8 +1,22 @@
 import AnimatedBackground from '@/Components/Admin/AnimatedBackground/AnimatedBackground'
 import EmailSignIn from '@/Components/Admin/Auth/EmailSignIn'
+import { useAuth } from '@/Context/AuthContext';
 import impolujos from '@/assets/img/impolujos.jpg'
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function AdminSignIn() {
+
+    const { adminSession } = useAuth();
+    const navigate = useNavigate();
+
+    // Solo permitir el acceso cuando no hay una sesion activa
+    useEffect(() => {
+        if (adminSession) {
+            navigate("/Admin/Inicio"); 
+        }
+    }, [adminSession, navigate]);
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-900 to-blue-900 flex items-center justify-center p-4 relative overflow-hidden">
             <AnimatedBackground />
