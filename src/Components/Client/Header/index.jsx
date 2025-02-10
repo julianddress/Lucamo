@@ -2,7 +2,7 @@ import NavLeft from "./nav-left/index";
 import NavFill from "./nav-fill";
 import NavRight from "./nav-right";
 
-const Header = ({ count }) => {
+const Header = () => {
     return (
         <nav className="flex justify-center bg-sky-950">
             <div className="w-screen grid items-center 
@@ -12,7 +12,7 @@ const Header = ({ count }) => {
             ">
                 <NavLeft />
                 <NavFill />
-                <NavRight count={count} />
+                <NavRight />
             </div>
         </nav>
     );

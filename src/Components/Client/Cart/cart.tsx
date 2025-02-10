@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import { useCart } from "../../../Context/CartContext";
+import {useState} from "react";
+import { useCart } from "@/Context/CartContext";
 import { ShoppingCart } from 'lucide-react'
 
 const CartLogo = () =>{
@@ -12,7 +12,7 @@ const CartLogo = () =>{
             <div className="fixed left-4 bottom-6 z-50">
                 <button
                     onClick={() => setIsOpen(!isOpen)}
-                    size="icon"
+                    // size="icon"
                     className="flex justify-center items-center h-14 w-14 rounded-full shadow-lg hover:shadow-xl transition-shadow relative bg-gradient-to-r from-violet-500 to-purple-500 hover:from-violet-600 hover:to-purple-600"
                 >
                     <ShoppingCart className="h-6 w-6 text-white" />

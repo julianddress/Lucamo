@@ -30,6 +30,39 @@ export const fetchProductsAPI = async () => {
     }
 };
 
+// Función para trear los productos de la base de dtaos de supabase
+export const fetchProducts = async () => {
+    try {
+        const { data, error } = await supabase
+        .from("products")
+        .select()
+
+        if(error) console.error("Ha ocurrido un problema al traer los productos")
+
+        return data
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+// Función para trear los productos destacados de la base de dtaos de supabase
+export const fetchFeaturedProducts = async () => {
+    try {
+        const { data, error } = await supabase
+        .from("products")
+        .select()
+        .eq("featured", true)
+
+        if(error) console.error("Ha ocurrido un problema al traer los productos destacados")
+
+        return data
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 // Función para actualizar productos en la base de datos de Supabase
 export const upsertProducts = async (products: Product[]): Promise<void> => {
     try {

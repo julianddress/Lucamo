@@ -1,19 +1,17 @@
-import ProductCard from '../ProductCard/index';
-import Iamgeproduct from '../../../assets/img/farolaHella.jpg';
+import ProductCard from '../ProductCard/product-card';
+import useForm from '@/Hooks/Admin/useForm';
+import { useCart } from '@/Context/CartContext';
+import { useProduct } from '@/Context/productContext';
 
 interface HomeProductsProps {
-    onShowDetails?: (productId: number) => void;
+    onShowDetails: () => void;
 }
 
 export default function HomeProducts({ onShowDetails }: HomeProductsProps) {
 
-    const products = Array.from({ length: 3 }, (_, i) => ({
-        id: i + 1,
-        title: "Farola Hella 1G0 996 134-001",
-        price: 223200,
-        imageUrl: `${Iamgeproduct}`,
-        discount: i === 0 ? "50% OFF" : undefined
-    }))
+    const { featuredProducts } = useProduct();
+    const [, , images] = useForm();
+    const {setCartData} = useCart()
 
     return (
         <div className="container mx-auto flex flex-col gap-5 lg:w-[90%] rounded-3xl md:rounded-[3rem] 
@@ -21,17 +19,24 @@ export default function HomeProducts({ onShowDetails }: HomeProductsProps) {
         >
                 <h1 className="text-center text-lg md:text-3xl md:mb-5 font-hammersmith font-medium">PRODUCTOS DESTACADOS</h1>
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-5 ">
-                    {products.map((product) => (
-                    <ProductCard
-                        key={product.id}
-                        title={product.title}
-                        price={product.price}
-                        imageUrl={product.imageUrl}
-                        discount={product.discount}
-                        onAdd={() => console.log(`Added product ${product.id}`)}
-                        onShowDetails={() => onShowDetails?.(product.id)}
-                    />
-                    ))}
+                    {featuredProducts.map((product) => {
+
+                        const renderImage = images.find((img) => img.id_product === product.id )
+
+                        return (
+                            <ProductCard
+                                key={product.id}
+                                id={product.id}
+                                title={product.name}
+                                price={product.price}
+                                imageUrl={renderImage?.image_url_1}
+                                discount={product.discount}
+                                onAdd={() => setCartData(product)}
+                                onShowDetails={() => onShowDetails()}
+                            />
+                        )
+                    })
+                    }
                 </div>
         </div>
     )
