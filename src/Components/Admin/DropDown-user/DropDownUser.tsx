@@ -8,15 +8,15 @@ import {
 } from "@/Components/Shared/UI/dropdown-menu";
 import { Avatar, AvatarImage, AvatarFallback } from "@/Components/Shared/UI/avatar";
 import { Button } from "../../Shared/UI/button";
-import { useAuth } from "@/Context/AuthContext";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signOutAdmin } from '@/Services/adminService';
+import { useAdmin } from "@/Context/AdminContext";
 
 function DropDownUser() {
 
     const navigate = useNavigate();
-    const { adminSession, setAdminSession, adminData } = useAuth();
+    const { adminSession, setAdminSession, adminData } = useAdmin();
     const [title, setTitle] = useState(''); 
 
     // Función para manejar el log out

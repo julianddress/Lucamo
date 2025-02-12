@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
 import { Input } from '@/Components/Shared/UI/input';
 import { Button } from '@/Components/Shared/UI/button';
 import { UserIcon, LockIcon } from 'lucide-react';
 import { supabase } from '@/Supabase/supbaseClient';
 import { useAuth } from '@/Context/AuthContext';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { insertUser } from '@/Services/userService';
+import { useAlert } from '@/Context/AlertContext';
+import { useState } from 'react';
 
 function EmailSignUp() {
 
@@ -14,11 +16,13 @@ function EmailSignUp() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const [loading, setLoading] = useState('');
+    const [loading, setLoading] = useState(false);
+    const {showSuccessAlert} = useAlert();
 
-    const { SignUpNewUser, session } = useAuth();
+    const { SignUpNewUser } = useAuth();
 
-    const handleSignUp = async (e) => {
+    // Función para registrar un nuevo usuario
+    const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setLoading(true);
 
@@ -26,31 +30,29 @@ function EmailSignUp() {
             const result = await SignUpNewUser(email, password, FirstName, LastName);
 
             if (result.success) {
-                navigate('/');
-                console.log('Registro exitoso');
-
-                // INSERT USER INTO PROFILE TABLE
-                try {
-                    const userId = session?.user?.id;
-
-                    const result = await supabase.from('profiles').insert({
-                        id: userId,
-                        FirstName,
-                        LastName,
-                        Role: 'user',
-                    })
-                } catch (err) {
-                    console.log("Ocurrió un error", err)
+                showSuccessAlert('Usuario registrado exitosamente');
+    
+                // Obtener la sesión actualizada directamente desde Supabase
+                const { data: { session } } = await supabase.auth.getSession();
+    
+                if (session) {
+                    const userId = session.user.id;
+                    const FirstName = session.user.user_metadata.FirstName;
+                    const LastName = session.user.user_metadata.LastName;
+    
+                    // Insertar usuario en la tabla "usuarios"
+                    await insertUser(userId, FirstName, LastName);
                 }
+                navigate('/');
 
-            } else if (result.error.message.includes('already registered')) {
+            } else if (result.error?.message.includes('already registered')) {
                 setError('Este correo electrónico ya está registrado. Intenta iniciar sesión.');
             } else {
                 setError('Ocurrió un error al registrarse. Inténtalo de nuevo.');
             }
 
         } catch (err) {
-            setError('Ocurrió un error inesperado.');
+            setError(`Ocurrió un error inesperado. ${err}`);
         } finally {
             setLoading(false);
         }

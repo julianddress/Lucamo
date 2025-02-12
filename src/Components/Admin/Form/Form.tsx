@@ -64,7 +64,7 @@ export function Form({ children, onChange }: FormProps) {
                 id="price"
                 type="number"
                 step="any"
-                placeholder="ej: 25.000"
+                placeholder="ej: 25000"
                 value={FormData?.price}
                 onChange={(e) => onChange("price", e)}
                 aria-label="Ingrese el precio del producto"

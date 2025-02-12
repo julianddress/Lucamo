@@ -15,6 +15,7 @@ const ClientLayout = ({children}: ClientLayoutProps) =>{
     const { successMessage, errorMessage, loadingMessage, infoMessage, loadingAlertVisible, successAlertVisible, errorAlertVisible, infoAlertVisible  } = useAlert();
     
     return  <>    
+            <div className="flex flex-col min-h-screen">
                 <Header/>
                     <div className="fixed right-[10%] top-[5%] flex flex-col gap-2 z-50">
                         {loadingAlertVisible && (
@@ -46,8 +47,9 @@ const ClientLayout = ({children}: ClientLayoutProps) =>{
                             />
                         )}
                     </div>
-                    <main>{children}</main>
+                    <main className="flex-1">{children}</main>
                 <Footer/>
+            </div>
 
             </>;
 }

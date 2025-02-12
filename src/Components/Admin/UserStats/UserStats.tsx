@@ -2,12 +2,12 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/Components/Shared/UI/avat
 import { Card, CardContent, CardHeader, CardTitle } from "@/Components/Shared/UI/Card"
 import { MessageCircle, Share2, Heart, Codesandbox } from 'lucide-react'
 import WomenIcon from "../../../assets/img/womenIcon.png"
-import { useAuth } from "@/Context/AuthContext";
 import useProducts from "@/Hooks/Admin/useProducts";
+import { useAdmin } from "@/Context/AdminContext";
 
 export function UserStats() {
 
-    const { adminSession, adminData } = useAuth();
+    const { adminSession, adminData } = useAdmin();
     const [products] = useProducts();
     
     return (

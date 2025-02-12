@@ -1,17 +1,26 @@
 import {useState} from "react";
 import { useCart } from "@/Context/CartContext";
 import { ShoppingCart } from 'lucide-react'
+import { useNavigate } from "react-router-dom";
 
 const CartLogo = () =>{
 
     const {count} = useCart();
+    const navigate = useNavigate()
     const [isOpen, setIsOpen] = useState(false)
+
+    // Redireccionar al carrito de compras
+    const handleCartLogo = () => {
+        setIsOpen(!isOpen)
+        navigate("/carrito/productos");
+    }
 
     return <>
 
-            <div className="fixed left-4 bottom-6 z-50">
+            <div className="fixed left-4 bottom-6 z-50" 
+                onClick={() => handleCartLogo()}
+            >
                 <button
-                    onClick={() => setIsOpen(!isOpen)}
                     // size="icon"
                     className="flex justify-center items-center h-14 w-14 rounded-full shadow-lg hover:shadow-xl transition-shadow relative bg-gradient-to-r from-violet-500 to-purple-500 hover:from-violet-600 hover:to-purple-600"
                 >

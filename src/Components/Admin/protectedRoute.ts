@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '@/Context/AuthContext';
 import { isIpAllowed } from '@/lib/isIpAllowed';
 import { getAdminSession } from '@/Services/adminService';
+import { useAdmin } from '@/Context/AdminContext';
 
 interface ProtectedRouteProps {
     children: React.ReactNode
@@ -10,7 +10,7 @@ interface ProtectedRouteProps {
 
 const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
     
-    const { setIsAllowed, isAllowed, loading, adminSession, setAdminSession, setIsAdmin } = useAuth();
+    const { setIsAllowed, isAllowed, loading, adminSession, setAdminSession, setIsAdmin } = useAdmin();
     const navigate = useNavigate();
 
     useEffect(() => {

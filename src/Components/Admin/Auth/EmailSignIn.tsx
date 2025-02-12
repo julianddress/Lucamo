@@ -3,8 +3,8 @@ import { useState, type FormEvent } from "react"
 import { Input } from "@/Components/Shared/UI/input"
 import { Button } from "@/Components/Shared/UI/button"
 import { useNavigate } from "react-router-dom"
-import { useAuth } from "@/Context/AuthContext"
 import { signInAdmin } from '@/Services/adminService';
+import { useAdmin } from "@/Context/AdminContext"
 
 function EmailSignIn() {
     
@@ -13,7 +13,7 @@ function EmailSignIn() {
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
-    const { setAdminSession, setIsAdmin } = useAuth() 
+    const { setAdminSession, setIsAdmin } = useAdmin() 
 
     const handleSignIn = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -24,7 +24,7 @@ function EmailSignIn() {
 
             if (response.success) {
                 
-                setAdminSession(response.session);
+                setAdminSession(response.session?.session ?? null);
                 setIsAdmin(true);
                 navigate("/Admin/Inicio")
 

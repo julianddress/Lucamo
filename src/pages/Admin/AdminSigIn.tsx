@@ -1,13 +1,13 @@
 import AnimatedBackground from '@/Components/Admin/AnimatedBackground/AnimatedBackground'
 import EmailSignIn from '@/Components/Admin/Auth/EmailSignIn'
-import { useAuth } from '@/Context/AuthContext';
+import { useAdmin } from '@/Context/AdminContext';
 import impolujos from '@/assets/img/impolujos.jpg'
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function AdminSignIn() {
 
-    const { adminSession } = useAuth();
+    const { adminSession } = useAdmin();
     const navigate = useNavigate();
 
     // Solo permitir el acceso cuando no hay una sesion activa

@@ -1,31 +1,42 @@
-// AuthContext.js
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 import { supabase } from '@/Supabase/supbaseClient';
-import { getClientIp } from '@/lib/getClientIP';
-import { isIpAllowed } from '@/lib/isIpAllowed';
-import { useAdminAuth } from '@/Hooks/Admin/useAdminAuth';
+import { getUserById, getUserSession } from '@/Services/userService'; 
+import { Session } from "@supabase/supabase-js";
+import { User } from '@/Types/userTypes';
 
-const AuthContext = createContext();
+interface AuthContextType {
+    loading: boolean;
+    session: Session | null;
+    setSession: React.Dispatch<React.SetStateAction<Session | null>>,
+    loginWithGoogle: () => Promise<{ success: boolean; data?: object, error?: { message: string }}>;
+    logout: () => void;
+    SignInUser: (email: string, password: string) => Promise<{ success: boolean; data?: object, error?: { message: string }}>;
+    SignUpNewUser: (email: string, password: string, FirstName: string, LastName: string) => Promise<{ success: boolean; data?: object, error?: { message: string } }>;
+    userData: User | undefined;
+}
 
-export const useAuth = () => useContext(AuthContext);
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export const AuthProvider = ({ children }) => {
+interface AuthProviderProps {
+    children: React.ReactNode;
+}
 
-    const {adminSession, setAdminSession, adminData} = useAdminAuth();
-    const [isAdmin, setIsAdmin] = useState(false);
-    const [isAllowed, setIsAllowed] = useState(null);
-    const [session, setSession] = useState(null);
+export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+
+    const [session, setSession] = useState<Session | null>(null);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState("");
+    const [userData, setUserData] = useState<User>();
 
     // Obtener la sesión
     useEffect(() => {
-        supabase.auth.getSession().then(({ data: { session } }) => {
+
+        // Obtener sesión inicial
+        getUserSession().then((session) => {
             setSession(session);
             setLoading(false);
         })
 
-        supabase.auth.onAuthStateChange(({ _event, session }) => {
+        supabase.auth.onAuthStateChange(( _event, session ) => {
             if (_event === 'SIGNED_IN') {
                 setSession(session);
             } else if (_event === 'SIGNED_OUT') {
@@ -34,8 +45,19 @@ export const AuthProvider = ({ children }) => {
         })
     }, []);
 
+    // Renderiza para asignar los datos del admin loggeado a adminData
+    useEffect(() => {
+        const fetchAdminData = async () => {
+            if (session) {
+                const user = await getUserById(session.user?.id)
+                setUserData(user.data)
+            }
+        }
+        fetchAdminData()
+    }, [session])
+
     // Función para iniciar sesion 
-    const SignInUser = async (email, password) => {
+    const SignInUser = async (email: string, password: string) => {
 
         try {
             const { data, error } = await supabase.auth.signInWithPassword({
@@ -45,18 +67,19 @@ export const AuthProvider = ({ children }) => {
 
             if (error) {
                 console.error('hubo un error al iniciar sesion: ', error);
-                return { success: false, error: error.message }
+                return { success: false, error: { message: error.message }}
             }
 
             return { success: true, data }
         }
         catch (error) {
             console.error("an error occured: ", error)
+            return { success: false, error: { message: 'An unknown error occurred' } };
         }
     };
 
     // Función para registrarse 
-    const SignUpNewUser = async (email, password, FirstName, LastName) => {
+    const SignUpNewUser = async (email: string, password: string, FirstName: string, LastName: string) => {
         const { data, error } = await supabase.auth.signUp({
             email,
             password,
@@ -101,16 +124,10 @@ export const AuthProvider = ({ children }) => {
     const value = {
         
         // Estados
-        adminData,
-        adminSession,
-        isAllowed,
         loading,
         session,
     
         // Setters
-        setAdminSession,
-        setIsAdmin,
-        setIsAllowed,
         setSession,
     
         // Funciones sobre la autenticación de los usuarios
@@ -118,6 +135,8 @@ export const AuthProvider = ({ children }) => {
         logout,
         SignInUser,
         SignUpNewUser,
+
+        userData,
     };
     
 
@@ -126,4 +145,12 @@ export const AuthProvider = ({ children }) => {
             {children}
         </AuthContext.Provider>
     );
+}
+
+export const useAuth = () => {
+    const context = useContext(AuthContext);
+        if (!context) {
+            throw new Error("useAdmin must be used within a AdminProvider");
+        }
+        return context;
 }

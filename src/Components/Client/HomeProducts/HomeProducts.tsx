@@ -11,7 +11,7 @@ export default function HomeProducts({ onShowDetails }: HomeProductsProps) {
 
     const { featuredProducts } = useProduct();
     const [, , images] = useForm();
-    const {setCartData} = useCart()
+    const {addToCart} = useCart()
 
     return (
         <div className="container mx-auto flex flex-col gap-5 lg:w-[90%] rounded-3xl md:rounded-[3rem] 
@@ -31,7 +31,7 @@ export default function HomeProducts({ onShowDetails }: HomeProductsProps) {
                                 price={product.price}
                                 imageUrl={renderImage?.image_url_1}
                                 discount={product.discount}
-                                onAdd={() => setCartData(product)}
+                                onAdd={() => addToCart(product)}
                                 onShowDetails={() => onShowDetails()}
                             />
                         )

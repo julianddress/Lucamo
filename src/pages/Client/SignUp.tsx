@@ -1,6 +1,4 @@
-import React, { useEffect } from 'react';
 import EmailSignUp from '../../Components/Client/Auth/EmailSignUp';
-import GoogleSignIn from '../../Components/Client/Auth/EmailSignUp';
 
 const SignUp = () => {
 
@@ -42,7 +40,7 @@ const SignUp = () => {
                                     <span className="px-2 bg-white text-gray-500">Ya tienes una cuenta?</span>
                                 </div>
                             </div>
-                            <GoogleSignIn />
+                            {/* <GoogleSignIn /> */}
                             <div className="text-center space-y-2 mt-4">
                                 <div className="border-t border-gray-100">
                                     <a href="/signin" className="text-purple-600 hover:text-purple-700 font-medium">

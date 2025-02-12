@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react';
-import EmailSignIn from '../../Components/Client/Auth/EmailSignIn';
-import GoogleSignIn from '../../Components/Client/Auth/GoogleSignIn';
-import { useNavigate } from 'react-router-dom';
+import EmailSignIn from '@/Components/Client/Auth/EmailSignIn';
+import GoogleSignIn from '@/Components/Client/Auth/GoogleSignIn';
 
 const SignIn = () => {
 

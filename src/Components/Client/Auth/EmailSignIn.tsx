@@ -1,20 +1,21 @@
-import React, { useState } from 'react';
 import { Input } from '@/Components/Shared/UI/input';
 import { Button } from '@/Components/Shared/UI/button';
 import { UserIcon, LockIcon } from 'lucide-react';
-import { supabase } from '@/Supabase/supbaseClient';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/Context/AuthContext';
+import { useAlert } from '@/Context/AlertContext';
+import { useState } from 'react';
 
 function EmailSignIn() {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const [loading, setLoading] = useState('');
+    const [loading, setLoading] = useState(false);
     const { SignInUser } = useAuth();
+    const {showSuccessAlert} = useAlert();
 
-    const handleSignIn = async (e) => {
+    const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setLoading(true);
 
@@ -23,16 +24,16 @@ function EmailSignIn() {
 
             if (result.success) {
                 navigate('/');
-                console.log('Inicio de sesion exitoso');
+                showSuccessAlert('Inicio de sesion exitoso');
 
-            }  else if (result.error.message.includes('Invalid login credentials')) {
+            }  else if (result.error?.message.includes('Invalid login credentials')) {
                 setError('Credenciales incorrectas. Intenta de nuevo.');
             } else {
                 setError('Ocurrió un error al registrarse. Inténtalo de nuevo.');
             }
 
         } catch (err) {
-            setError('Ocurrió un error inesperado.');
+            setError(`Ocurrió un error inesperado. ${err}`);
         } finally {
             setLoading(false);
         }

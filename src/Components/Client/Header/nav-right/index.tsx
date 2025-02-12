@@ -1,17 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import DropDownUser from '@/Components/Client/DropDown-user/DropDownUser';
 import { useAuth } from '@/Context/AuthContext';
 
 const NavRight = () => {
 
-    const { session } = useAuth();
+    const { userData } = useAuth();
     const [title, setTitle] = useState(''); 
 
     useEffect(() => {
-        console.log(session)
-        const userName = session?.user?.user_metadata?.FirstName;
-        setTitle( session?.user ? `Hola, ${userName}` : 'Identificate');
-    }, [session]);    
+        setTitle( userData ? `Hola, ${userData?.first_name}` : 'Identificate');
+    }, [userData]);    
 
     return (
         <div className="overflow-hidden flex items-center justify-end gap-4 md:gap-2 lg:col-span-1">

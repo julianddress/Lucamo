@@ -1,9 +1,9 @@
-import { useAuth } from "@/Context/AuthContext";
+import { useAdmin } from "@/Context/AdminContext";
 import { LightbulbIcon, HomeIcon } from "lucide-react"
 
 export default function NotFound() {
 
-    const { adminSession } = useAuth();
+    const { adminSession } = useAdmin();
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-purple-900 to-black flex items-center justify-center px-4 sm:px-6 lg:px-8">
