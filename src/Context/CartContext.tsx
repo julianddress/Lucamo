@@ -6,7 +6,6 @@ import { Cart } from "@/Types/cartTypes";
 
 interface CartContextType {
     count: number;
-    incrementCart: () => void;
     cartProducts: Product[];
     addToCart: (product: Product) => void;
     removeFromCart: (productId: string) => void;
@@ -20,8 +19,8 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
 
-    const [count, setCount] = useState(0);
     const [cartProducts, setCartProducts] = useState<Product[]>([])
+    const [count, setCount] = useState(cartProducts.length);
     const [loadingProducts, setLoadingProducts] = useState<{ [key: string]: boolean }>({});
     const [amount, setAmount] = useState<Cart[]>([])
     const {session} = useAuth();
@@ -71,11 +70,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         fetchQuantity();
     }, [session])
 
-    // Función para manejar el contador del carrito
-    const incrementCart = () => {
-        setCount(cartProducts.length + 1)
-    };
-
     // Función para almacenar los productos agregados al carrito
     const addToCart = async (product: Product) => {
         if (!session) return;
@@ -89,7 +83,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
             return;
         }
 
-        setCartProducts((prev) => [...prev, product]);
+        setCount(cartProducts.length + 1)
     }
 
     // Función para quitar un producto del carrito
@@ -180,7 +174,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
 
     return (
-        <CartContext.Provider value={{ count, incrementCart, cartProducts, addToCart, removeFromCart, amount, increaseQuantity, decreaseQuantity, loadingProducts }}>
+        <CartContext.Provider value={{ count, cartProducts, addToCart, removeFromCart, amount, increaseQuantity, decreaseQuantity, loadingProducts }}>
             {children}
         </CartContext.Provider>
     );

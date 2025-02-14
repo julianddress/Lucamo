@@ -1,5 +1,5 @@
 import { useCart } from "@/Context/CartContext"
-import { Eye, EyeClosed , Tag   } from 'lucide-react'
+import { Eye, EyeClosed , Tag , CheckCheck, CircleFadingPlus  } from 'lucide-react'
 import { Card, CardContent } from "../../Shared/UI/Card"
 import {ImageCard} from "../../Shared/UI/ImageCard"
 import { Badge } from "../../Shared/UI/Badge"
@@ -8,7 +8,6 @@ import { useProduct } from "@/Context/productContext"
 import { useAlert } from "@/Context/AlertContext"
 import { useAuth } from "@/Context/AuthContext"
 import { useNavigate } from "react-router-dom"
-import { AddToCartButton } from "../AddToCartButton/AddToCartButton"
 
 interface ProductCardProps {
         id: string;
@@ -32,20 +31,19 @@ export default function ProductCard({
 
     const { selectedProduct } = useProduct();    
     const navigate = useNavigate();
+    const [isProductAdded, setIsProductAdded] = useState(false);
     const [isHoveringQuickView, setIsHoveringQuickView] = useState(false);
-    const { incrementCart, cartProducts } = useCart();
+    const { cartProducts } = useCart();
     const {session} = useAuth();
     const { showSuccessAlert, showInfoAlert } = useAlert();
-
-    const isInCart = cartProducts.some(product => product.id === id);
 
     // Función para controlar el contador del carrito
     const handleIncrementCart = () => {
         if(session){
-            if(!isInCart){
+            if(!isProductAdded && !cartProducts.some(product => product.id === id)){
                 onAdd();
-                incrementCart();
                 showSuccessAlert(`( ${title} ) fue añadida al carrito`);
+                setIsProductAdded(true)
             } else {
                 showInfoAlert(`Este producto ya fue añadido al carrito`);
             }
@@ -119,13 +117,27 @@ export default function ProductCard({
                                         ${price}
                                     </span>
                                 </div>
-                                <button
+                                <div
                                     className="cursor-none h-8 px-2 w-max text-white rounded-lg bg-green-700 backdrop-blur hover:bg-green-900
-                                            lg:flex lg:items-center hover:text-green-200"
+                                            flex items-center hover:text-green-200"
                                     onClick={handleIncrementCart}
                                 >
-                                    <AddToCartButton isInCart={isInCart} onClick={handleIncrementCart}/>
-                                </button>
+                                    {cartProducts.some(product => product.id === id) ? (
+                                        <>
+                                            <div className="lg:flex items-center cursor-not-allowed">
+                                                <span className="hidden lg:flex sm:text-xs lg:text-base mr-2 cursor-not-allowed">Añadido</span>
+                                                <CheckCheck size={20} />
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div className="lg:flex items-center cursor-pointer">
+                                                <span className="hidden lg:flex sm:text-xs lg:text-base mr-2">Añadir</span>
+                                                <CircleFadingPlus size={20} />
+                                            </div>
+                                        </>
+                                    )}
+                                </div>
                             </div>
                         </div>
 

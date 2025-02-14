@@ -29,7 +29,7 @@ function EmailSignIn() {
             }  else if (result.error?.message.includes('Invalid login credentials')) {
                 setError('Credenciales incorrectas. Intenta de nuevo.');
             } else {
-                setError('Ocurrió un error al registrarse. Inténtalo de nuevo.');
+                setError('Correo o contraseña incorrectos. Inténtalo de nuevo.');
             }
 
         } catch (err) {

@@ -11,7 +11,7 @@ function CartSummary() {
         const quantity = amount.find(item => item.product_id === product.id)?.quantity || 0;
         return acc + (parseFloat(product.price) * quantity);
     }, 0);
-    const tax = 8.00;
+    const tax = (subtotal * 0.19);
     const total = subtotal + tax;
 
     return (
@@ -23,15 +23,15 @@ function CartSummary() {
                 <div className="space-y-2">
                 <div className="flex justify-between">
                     <span>Subtotal</span>
-                    <span>${subtotal.toLocaleString('es-CO', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+                    <span>$ {subtotal.toLocaleString('es-CO', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                 </div>
                 <div className="flex justify-between">
-                    <span>Impuestos</span>
+                    <span>{`Impuestos 19%`}</span>
                     <span>${tax.toLocaleString('es-CO', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                 </div>
                 <div className="flex justify-between font-bold">
                     <span>Total</span>
-                    <span>${total.toLocaleString('es-CO', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+                    <span>$ {total.toLocaleString('es-CO', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                 </div>
                 </div>
             </CardContent>
