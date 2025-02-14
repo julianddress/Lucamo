@@ -8,7 +8,7 @@ import AdminSignIn from "./pages/Admin/AdminSigIn";
 import Inicio from "./pages/Admin/Inicio";
 import Statistics from "./pages/Admin/statistics";
 import Sales from "./pages/Admin/sales";
-import Products from "./pages/Admin/products";
+import Products from "./pages/Client/ProductPage";
 import Users from "./pages/Admin/users";
 import Settings from "./pages/Admin/settings";
 import NotFound from "./pages/404";
@@ -19,6 +19,7 @@ export const router = createBrowserRouter([
     // CLIENT
     { path: '/', element: <Home /> },
     { path: '/carrito/productos', element: <Cart /> },
+    { path: '/lista-productos', element: <Products /> },
     { path: '/signin', element: <SignIn /> },
     { path: '/signup', element: <SignUp /> },
 

@@ -3,8 +3,11 @@ import { BannerSection, StockSection } from "../../Sections";
 import { CartProvider } from "@/Context/CartContext";
 import { CartLogo } from "@/Components/Client/Cart/cart-logo";
 import { ProductProvider } from "@/Context/productContext";
+import { useRemoveToken } from "@/Hooks/Shared/useRemoveToken";
 
 const Home = () =>{
+
+    useRemoveToken();
     
     return  <>
                 <ProductProvider>
