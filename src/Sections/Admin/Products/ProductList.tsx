@@ -5,7 +5,7 @@ import { Card, CardContent } from '@/Components/Shared/UI/Card'
 import { LoadingAlert } from '@/Components/Shared/Alerts/LoadingAlert'
 import { AlertsDialog } from '@/Components/Shared/Alert-Dialog/Alert-Dialog'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/Components/Shared/UI/table"
-import useForm from '@/Hooks/Admin/useForm'
+import useForm from '@/Hooks/Shared/useForm.ts'
 import useProducts from '@/Hooks/Admin/useProducts'
 import useEditProduct from '@/Hooks/Admin/useEditProduct'
 import { useAlert } from '@/Context/AlertContext.jsx'

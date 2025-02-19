@@ -1,5 +1,5 @@
 import { useProduct } from "@/Context/productContext";
-import useForm from "@/Hooks/Admin/useForm"
+import useForm from "@/Hooks/Shared/useForm"
 import { ProductImages } from "@/Types/productTypes";
 import { useEffect, useState } from "react"
 
@@ -37,14 +37,14 @@ function ProductImage() {
 
     return (
         <div className="flex flex-col items-center gap-1">
-            <div className="relative lg:w-full lg:h-[60%] overflow-hidden rounded-lg">
+            <div className="relative w-[80%] lg:w-[80%] overflow-hidden rounded-lg">
                 <img
                     src={productImages[currentImage] || "/placeholder.svg"}
                     alt="FAROLA DERECHA 18V JU FOR FUN"
                     className="w-full h-full object-fill transition-opacity duration-200 ease-out"
                 />
             </div>
-            <div className="grid grid-cols-4 gap-6">
+            <div className="w-[60%] lg:w-[50%] grid grid-cols-3 gap-6">
                 {productImages.map((src, index) => (
                     <button
                         key={index}

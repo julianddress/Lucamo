@@ -15,7 +15,7 @@ function ProductCardDetails({onCloseDetails}: ProductCardDetailsProps) {
                 <CardContent className="bg-slate-100 relative rounded-lg w-[60%] h-[60%] p-0 lg:top-[10%]" >
                     <Minimize2  onClick={onCloseDetails} className="absolute right-4 top-3 cursor-pointer " />
                     <div className="lg:grid lg:grid-cols-2 gap-4 bg-white rounded-xl">
-                        <div className="h-full p-10">
+                        <div className="h-full py-10">
                             <ProductImage />
                         </div>
                         <div className="h-full rounded-l-[40px] bg-[#f2f3cc]">

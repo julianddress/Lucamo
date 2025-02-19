@@ -3,7 +3,7 @@ import { useAlert } from "@/Context/AlertContext";
 import { useAuth } from "@/Context/AuthContext";
 import { useCart } from "@/Context/CartContext";
 import { useProduct } from "@/Context/productContext"
-import useForm from "@/Hooks/Admin/useForm";
+import useForm from "@/Hooks/Shared/useForm";
 import { Label } from "@radix-ui/react-dropdown-menu";
 import { Heart, Star } from "lucide-react"
 import { useState } from "react";
@@ -11,9 +11,9 @@ import { useNavigate } from "react-router-dom";
 
 function ProductInfo() {
 
-    const {selected, featuredProducts} = useProduct();
+    const {selected, products} = useProduct();
 
-    const product = featuredProducts.find( (item) => item.id === selected)
+    const product = products.find( (item) => item.id === selected)
     const [isProductAdded, setIsProductAdded] = useState(false);
     const { showSuccessAlert, showInfoAlert } = useAlert();
     const { addToCart, cartProducts } = useCart();
@@ -42,7 +42,10 @@ function ProductInfo() {
 
                 <div className="flex flex-col space-y-4 p-8 h-full">
                     <div className="space-y-2">
-                        <p className="text-sm text-gray-500">{product?.reference}</p>
+                        <div className="flex gap-10 text-sm text-gray-500">
+                            <p >{product?.reference}</p>
+                            <p className="text-red-500 font-hammersmith">{product?.discount}</p>
+                        </div>
                         <h1 className="text-3xl font-luckiest">{product?.name}</h1>
                     </div>
                     <p className="text-gray-600 text-sm/5 mt-2">
@@ -62,13 +65,13 @@ function ProductInfo() {
                             <Label className="text-[10px] text-neutral-400">Color</Label>
                             <p className="text-base font-semibold pt-2">Negro</p>
                         </div>
-                        <p className="text-xl p-6 font-sans font-bold">$ {product?.price}</p>
+                        <p className="text-xl p-6 font-sans font-bold">$ {Number(product?.price).toLocaleString('es-CO', { minimumFractionDigits: 0 })}</p>
                     </div>
                     <div className="flex space-x-4 items-end flex-1">
                     {cartProducts.some(item => item.id === product?.id) ? ( 
                         <Button className="flex-1"
                         >
-                            Ya esta en tu carrito !
+                            Ya está en tu carrito !
                         </Button>
                     ): (
                         <Button className="flex-1"

@@ -8,6 +8,7 @@ import { useProduct } from "@/Context/productContext"
 import { useAlert } from "@/Context/AlertContext"
 import { useAuth } from "@/Context/AuthContext"
 import { useNavigate } from "react-router-dom"
+import { generateProductUrl } from "@/utils/urlHelpers";
 
 interface ProductCardProps {
         id: string;
@@ -70,10 +71,14 @@ export default function ProductCard({
                         <div className="relative overflow-hidden bg-white">
 
                             {/* Product Image */}
-                            <ImageCard 
-                                imageUrl={imageUrl || ''}
-                                altText={title}
-                            />
+                            <div onClick={() => {
+                                navigate(generateProductUrl({ id, name: title }))
+                            }}>
+                                <ImageCard 
+                                    imageUrl={imageUrl || ''}
+                                    altText={title}
+                                />
+                            </div>
                             
                             {/* Vista Rápida overlay */}
                             <div 
@@ -98,49 +103,54 @@ export default function ProductCard({
                             </div>
                         </div>
 
-                        {/* Separador */}
-                        <div className='before:absolute before:left-0 before:w-full before:h-1 before:bg-cyan-600'/>
+                        {/* Navegar a /Producto enviando el id seleccionado */}
+                        <div onClick={() => {
+                            navigate(generateProductUrl({ id, name: title }))
+                        }}>
 
-                        {/* Product Info */}
-                        <div className=" flex flex-col pt-5 gap-1 sm:gap-4 items-center justify-items-center px-2 sm:px-4 lg:px-6"
-                        >
-                            <h3 className="min-h-10 text-[12px] sm:text-sm font-bold text-gray-950 line-clamp-2 text-center"
+                            {/* Separador */}
+                            <div className='before:absolute before:left-0 before:w-full before:h-1 before:bg-cyan-600'/>
+
+                            {/* Product Info */}
+                            <div className=" flex flex-col pt-5 gap-1 sm:gap-4 items-center justify-items-center px-2 sm:px-4 lg:px-6"
                             >
-                                {title}
-                            </h3>
-                            <div className='w-full flex flex-row justify-between items-center'>
-                                <div className="self-center w-max rounded-lg bg-blue-200 px-2.5 py-1 text-sm font-semibold text-blue-950 
-                                            sm:text-base sm:px-3 sm:py-1.5
-                                            lg:text-base lg:px-3 lg:py-1 "
+                                <h3 className="min-h-10 text-[12px] sm:text-sm font-bold text-gray-950 line-clamp-2 text-center"
                                 >
-                                    <span>
-                                        ${price}
-                                    </span>
-                                </div>
-                                <div
-                                    className="cursor-none h-8 px-2 w-max text-white rounded-lg bg-green-700 backdrop-blur hover:bg-green-900
-                                            flex items-center hover:text-green-200"
-                                    onClick={handleIncrementCart}
-                                >
-                                    {cartProducts.some(product => product.id === id) ? (
-                                        <>
-                                            <div className="lg:flex items-center cursor-not-allowed">
-                                                <span className="hidden lg:flex sm:text-xs lg:text-base mr-2 cursor-not-allowed">Añadido</span>
-                                                <CheckCheck size={20} />
-                                            </div>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <div className="lg:flex items-center cursor-pointer">
-                                                <span className="hidden lg:flex sm:text-xs lg:text-base mr-2">Añadir</span>
-                                                <CircleFadingPlus size={20} />
-                                            </div>
-                                        </>
-                                    )}
+                                    {title}
+                                </h3>
+                                <div className='w-full flex flex-row justify-between items-center gap-1'>
+                                    <div className="self-center w-max rounded-lg bg-blue-200 px-2.5 py-1 text-sm font-semibold text-blue-950 
+                                                sm:text-base sm:px-3 sm:py-1.5
+                                                lg:text-base lg:px-3 lg:py-1 "
+                                    >
+                                        <span>
+                                            ${Number(price).toLocaleString('es-CO', { minimumFractionDigits: 0 })}
+                                        </span>
+                                    </div>
+                                    <div
+                                        className="cursor-none h-8 px-2 w-max text-white rounded-lg bg-green-700 backdrop-blur hover:bg-green-900
+                                                flex items-center hover:text-green-200"
+                                        onClick={handleIncrementCart}
+                                    >
+                                        {cartProducts.some(product => product.id === id) ? (
+                                            <>
+                                                <div className="lg:flex items-center cursor-not-allowed">
+                                                    <span className="hidden lg:flex sm:text-xs lg:text-base mr-2 cursor-not-allowed">Añadido</span>
+                                                    <CheckCheck size={20} />
+                                                </div>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <div className="lg:flex items-center cursor-pointer">
+                                                    <span className="hidden lg:flex sm:text-xs lg:text-base mr-2">Añadir</span>
+                                                    <CircleFadingPlus size={20} />
+                                                </div>
+                                            </>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
                     </CardContent>
                 </Card>                  
             </> 

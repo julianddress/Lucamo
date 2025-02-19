@@ -4,7 +4,7 @@ import { ProductProvider } from "@/Context/productContext"
 import { ClientLayout } from "@/Layouts/ClientLayout"
 import ProductSection from "@/Sections/Client/ProductSection"
 
-export default function Products() {
+export default function ProductPage() {
     return (
         <ProductProvider>
             <CartProvider>

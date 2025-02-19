@@ -1,7 +1,7 @@
 import { Button } from '@/Components/Shared/UI/button'
 import { Card } from '@/Components/Shared/UI/Card';
 import { useCart } from '@/Context/CartContext'
-import useForm from '@/Hooks/Admin/useForm';
+import useForm from '@/Hooks/Shared/useForm';
 import { Loader, Minus, Plus, Trash2 } from 'lucide-react'
 import EmptyCart from './empty-cart';
 import { useAuth } from '@/Context/AuthContext';
@@ -10,7 +10,7 @@ function CartItem() {
 
     const { cartProducts, removeFromCart, amount, increaseQuantity, decreaseQuantity, loadingProducts } = useCart();
     const {session} = useAuth();
-    const [ , , images] = useForm();
+    const [ inventory, , images] = useForm();
 
     return <>
         <Card className='flex flex-col shadow-custom mx-4 lg:mr-0 px-6 pt-5 pb-16'>
@@ -22,6 +22,7 @@ function CartItem() {
 
                 {cartProducts.map((product) => {
 
+                    const productInventory = inventory.find(item => item.id_product === product.id);
                     const quantity = amount.find((item) => item.product_id === product.id ) 
                     const prod_image = images.find((img) => img.id_product === product.id )
                     
@@ -58,7 +59,7 @@ function CartItem() {
                                                         size="icon" 
                                                         disabled={loadingProducts[product.id]}
                                                         onClick={() => {
-                                                            if(session) increaseQuantity(session.user.id, product.id)
+                                                            if(session && productInventory?.quantity !== quantity?.quantity) increaseQuantity(session.user.id, product.id)
                                                         }}
                                                         className='hover:bg-primary hover:text-white shadow-md h-6 w-6 sm:h-9 sm:w-9'
                                                     >
@@ -70,6 +71,11 @@ function CartItem() {
                                                     <Trash2 className="h-4 w-4" />
                                                 </Button>
                                             </div>
+                                            { productInventory?.quantity == quantity?.quantity &&
+                                            <div className='text-pink-500 mt-5'>
+                                                Ha alcanzado el número máximo de unidades en el inventario
+                                            </div>
+                                            }
                                         </div>
                                         { loadingProducts[product.id] ? 
                                                 <Loader className="h-8 w-8 animate-spin" /> 

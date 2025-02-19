@@ -1,6 +1,6 @@
 import { useProduct } from "@/Context/productContext";
 import ProductCard from "../ProductCard/product-card"
-import useForm from "@/Hooks/Admin/useForm";
+import useForm from "@/Hooks/Shared/useForm";
 import { useCart } from "@/Context/CartContext";
 
 interface ProductGridProps {

@@ -54,6 +54,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     useEffect(() => {
 
         const fetchQuantity = async () => {
+
+            if (!session) return;
+            
             try {
                 const { data, error } = await supabase
                 .from('cart')
@@ -141,7 +144,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     const decreaseQuantity = async (userId: string, productId: string) => {
 
         setLoadingProducts(prev => ({ ...prev, [productId]: true }));
-
         const productInCart = amount.find(item => item.product_id === productId);
         if (!productInCart || productInCart.quantity <= 1)  {
             await removeFromCart(productId); 
