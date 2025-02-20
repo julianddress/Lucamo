@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const Categories = () => {
 
     const [ActiveButton, setActiveButton] = useState(2);
 
-    const HandleButtonClick = (button) => {
+    const HandleButtonClick = (button: number) => {
         setActiveButton(button);
     }
 

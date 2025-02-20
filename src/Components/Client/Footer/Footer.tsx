@@ -1,4 +1,4 @@
-import { FooterSection } from '../../../Sections';
+import { FooterSection } from '../../../Sections/index.js';
 import { NewsletterForm } from './NewsLetterForm.tsx';
 import {
     Facebook,

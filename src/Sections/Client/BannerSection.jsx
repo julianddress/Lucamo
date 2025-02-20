@@ -1,5 +1,5 @@
 import React from "react";
-import {Banner} from "../../Components";
+import { Banner } from "@/Components/Client/Banner/Banner";
 
 const carouselItems = [
     {

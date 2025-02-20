@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-// import "../../assets/css/base.css"
 import NextSlide from "../../../assets/img/nextSlide.svg";
 import PreviouSlide from "../../../assets/img/previouSlide.svg";
 

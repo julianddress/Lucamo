@@ -1,5 +1,6 @@
 import { useAlert } from "@/Context/AlertContext";
-import { Header, Footer } from "../Components/index";
+import { Header } from "@/Components/Client/Header/Header";
+import { Footer } from "@/Components/Client/Footer/Footer";
 import { ReactNode } from "react";
 import { LoadingAlert } from "@/Components/Shared/Alerts/LoadingAlert";
 import { SuccessAlert } from "@/Components/Shared/Alerts/SuccessAlert";

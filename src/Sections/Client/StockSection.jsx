@@ -1,5 +1,5 @@
 import React from "react";
-import { HomeProducts } from "../../Components/index";
+import HomeProducts from "@/Components/Client/HomeProducts/HomeProducts";
 import ProductCardDetails from "@/Components/Client/ProductCardDetails/product-card-details";
 import {useProductDetails} from "../../Hooks/Client/useProductDetails"
 

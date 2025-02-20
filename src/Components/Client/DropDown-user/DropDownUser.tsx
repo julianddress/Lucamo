@@ -3,20 +3,25 @@ import {
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuLabel,
-    DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/Components/Shared/UI/dropdown-menu";
-import { User } from "lucide-react";
+import { Separator } from "@/Components/Shared/UI/separator";
+
 import { useAuth } from "@/Context/AuthContext";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ChevronRight } from 'lucide-react';
 
-function DropDownUser() {
+interface DropDownUserProps {
+    onToggle: () => void;
+    children: React.ReactNode
+}
+
+function DropDownUser({children, onToggle}: DropDownUserProps) {
 
     const navigate = useNavigate();
     const { logout, session } = useAuth();
     const [title, setTitle] = useState(''); 
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
     const handleSignout = async () => {
         try {
@@ -26,26 +31,40 @@ function DropDownUser() {
             console.error(err);
         }
     }
-
+    
     useEffect(() => { setTitle( session?.user ? 'Cerrar sesión' : 'Iniciar sesión') }, [session]);
 
+    const toggleDropdown = () => {
+        setIsDropdownOpen(!isDropdownOpen)
+        onToggle();
+    }
+
     return (
-        <DropdownMenu>
-            <DropdownMenuTrigger>
-                <div className="flex items-center text-center bg-transparent border-none">
-                    <ChevronRight size={16} className="absolute right-8 text-white stroke-[5px]" />
-                    <User size={34} color="white" aria-label="Configuracion de tu cuenta" />
-                </div>
+        <DropdownMenu onOpenChange={toggleDropdown}>
+            <DropdownMenuTrigger className="focus:outline-none">
+                {children}
             </DropdownMenuTrigger>
-            <DropdownMenuContent>
-                <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>Profile</DropdownMenuItem>
-                <DropdownMenuItem>Billing</DropdownMenuItem>
-                <DropdownMenuItem>Team</DropdownMenuItem>
-                <DropdownMenuItem>Subscription</DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem  onClick={handleSignout}>{title}</DropdownMenuItem>
+            <DropdownMenuContent className="bg-white text-black rounded-sm">
+                <DropdownMenuLabel className="text-sm">Tu cuenta</DropdownMenuLabel>
+                <Separator className="bg-slate-500" />
+                <a href="">
+                    <DropdownMenuItem className="text-sm focus:bg-lime-300">Cuenta</DropdownMenuItem>
+                </a>
+                <a href="">
+                    <DropdownMenuItem className="text-sm focus:bg-lime-300">Historial de compras</DropdownMenuItem>
+                </a>
+                <a href="/carrito/productos">
+                    <DropdownMenuItem className="text-sm focus:bg-lime-300">Carrito de compras</DropdownMenuItem>
+                </a>
+                <a href="">
+                    <DropdownMenuItem className="text-sm focus:bg-lime-300">PQRS</DropdownMenuItem>
+                </a>
+                <Separator className="bg-slate-300"/>
+                <DropdownMenuItem 
+                    className="text-sm focus:bg-red-400 focus:text-white" 
+                    onClick={handleSignout}>
+                            {title}
+                </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
     );
