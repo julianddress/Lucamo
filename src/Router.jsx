@@ -15,6 +15,7 @@ import Settings from "./pages/Admin/settings";
 import NotFound from "./pages/404";
 import App from "./App";
 import ProductDetailsPage from "./pages/Client/ProductDetailsPage";
+import Carousel from "./pages/Admin/Carousel";
 
 export const router = createBrowserRouter([
 
@@ -32,6 +33,7 @@ export const router = createBrowserRouter([
     { path: '/Admin/Estadisticas', element: <ProtectedRoute> <Statistics/> </ProtectedRoute>},
     { path: '/Admin/Ventas', element: <ProtectedRoute> <Sales/> </ProtectedRoute>},
     { path: '/Admin/Productos', element: <ProtectedRoute> <Products/> </ProtectedRoute> },
+    { path: '/Admin/Carrusel', element: <ProtectedRoute> <Carousel/> </ProtectedRoute> },
     { path: '/Admin/Usuarios', element: <ProtectedRoute> <Users/> </ProtectedRoute>},
     { path: '/Admin/Configuracion', element: <ProtectedRoute> <Settings/> </ProtectedRoute>},
 

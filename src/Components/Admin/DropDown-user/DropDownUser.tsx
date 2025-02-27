@@ -7,7 +7,6 @@ import {
     DropdownMenuTrigger,
 } from "@/Components/Shared/UI/dropdown-menu";
 import { Avatar, AvatarImage, AvatarFallback } from "@/Components/Shared/UI/avatar";
-import { Button } from "../../Shared/UI/button";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signOutAdmin } from '@/Services/adminService';
@@ -36,9 +35,9 @@ function DropDownUser() {
         <DropdownMenu >
             <DropdownMenuTrigger>
                 <div className="flex items-center text-center bg-transparent border-none">
-                    <Button size="sm" className="bg-purple-600 text-white hover:bg-purple-900">
+                    <div className="w-max h-max px-3 py-2 rounded-md bg-purple-600 text-white hover:bg-purple-900">
                         Mi Cuenta
-                    </Button>
+                    </div>
                 </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="bg-zinc-900">

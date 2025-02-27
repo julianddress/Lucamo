@@ -7,6 +7,7 @@ import {
     Settings,
     ShoppingCart,
     Users,
+    Image,
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
@@ -15,6 +16,7 @@ const sidebarItems = [
     { icon: BarChart3, label: "Estadísticas", href: "/Admin/Estadisticas" },
     { icon: ShoppingCart, label: "Ventas", href: "/Admin/Ventas" },
     { icon: Package, label: "Productos", href: "/Admin/Productos" },
+    { icon: Image, label: "Carrusel", href: "/Admin/Carrusel" },
     { icon: Users, label: "Usuarios", href: "/Admin/Usuarios" },
     { icon: Settings, label: "Configuración", href: "/Admin/Configuracion" },
 ];

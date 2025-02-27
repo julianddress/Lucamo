@@ -2,6 +2,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/Components/Shared/UI/avat
 import { Card, CardContent, CardHeader, CardTitle } from "@/Components/Shared/UI/Card"
 import { MessageCircle, Share2, Heart, Codesandbox } from 'lucide-react'
 import WomenIcon from "../../../assets/img/womenIcon.png"
+import MenIcon from "@/assets/img/MenIcon.png"
 import useProducts from "@/Hooks/Admin/useProducts";
 import { useAdmin } from "@/Context/AdminContext";
 
@@ -16,7 +17,13 @@ export function UserStats() {
                 <div className="flex flex-col items-center text-center gap-3 space-x-4">
                     <Avatar className="h-120 w-130 rounded-[40%]">
                         <AvatarImage src={adminSession?.user?.user_metadata?.picture} />
-                        <AvatarFallback>{WomenIcon}</AvatarFallback>
+                        <AvatarFallback>
+                            {adminData?.role == "Administradora" ? (
+                                <img src={WomenIcon} alt="Imagen del usuario loggeado" />
+                            ) : (
+                                <img src={MenIcon} alt="Imagen del usuario loggeado" />
+                            )}
+                        </AvatarFallback>
                     </Avatar>
                     <div>
                         <CardTitle className="text-xl">{`${adminData?.first_name} `+`${adminData?.last_name}`}</CardTitle>

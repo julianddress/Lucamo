@@ -12,7 +12,7 @@ export function LoadingAlert({ title, description, className }: LoadingAlertProp
     return (
         
             <Alert variant="destructive" className={`bg-orange-400 relative ${className}`}>
-                <Loader className="h-6 w-6 absolute my-1 mr-3" />
+                <Loader className="h-6 w-6 absolute my-1 mr-3 animate-spin" />
                 <AlertTitle>{title}</AlertTitle>
                 <AlertDescription>{description}</AlertDescription>
             </Alert>

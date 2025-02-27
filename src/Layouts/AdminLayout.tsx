@@ -12,6 +12,7 @@ const sidebarItems = [
     { label: "Estadísticas", href: "/Admin/Estadisticas" },
     { label: "Ventas", href: "/Admin/Ventas" },
     { label: "Productos", href: "/Admin/Productos" },
+    { label: "Carrusel", href: "/Admin/Carrusel" },
     { label: "Usuarios", href: "/Admin/Usuarios" },
     { label: "Configuración", href: "/Admin/Configuracion" },
 ];
