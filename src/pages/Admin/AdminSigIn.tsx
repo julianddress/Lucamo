@@ -1,4 +1,4 @@
-import AnimatedBackground from '@/Components/Admin/AnimatedBackground/AnimatedBackground'
+import AnimatedBackground from '@/Components/Shared/AnimatedBackground/AnimatedBackground';
 import EmailSignIn from '@/Components/Admin/Auth/EmailSignIn'
 import { useAdmin } from '@/Context/AdminContext';
 import impolujos from '@/assets/img/impolujos.jpg'

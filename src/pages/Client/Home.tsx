@@ -1,5 +1,6 @@
 import { ClientLayout } from "@/Layouts/ClientLayout";
-import { BannerSection, StockSection } from "../../Sections";
+import { CarouselSection } from "@/Sections/Client/CarouselSection";
+import { StockSection } from "../../Sections";
 import { CartProvider } from "@/Context/CartContext";
 import { CartLogo } from "@/Components/Client/Cart/cart-logo";
 import { ProductProvider } from "@/Context/productContext";
@@ -15,7 +16,7 @@ const Home = () =>{
 
                     <ClientLayout>
                         <CartLogo/>
-                        <BannerSection/>
+                        <CarouselSection />
                         <StockSection/>
                     </ClientLayout>
 

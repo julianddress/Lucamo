@@ -62,6 +62,6 @@ export default function AnimatedBackground() {
     }
   }, [])
 
-  return <canvas ref={canvasRef} className="absolute inset-0" />
+  return <canvas ref={canvasRef} className="absolute inset-0 w-max h-max" />
 }
 

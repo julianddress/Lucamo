@@ -51,7 +51,9 @@ export function ImageUploader({ onImageChange }: ImageUploaderProps) {
             ) : (
                 <div className="space-y-2">
                     <Upload className="mx-auto h-12 w-12 text-gray-400" />
-                    <p className="text-sm text-gray-600">Arrastra o suelta una imagen acá, o haz click para seleccionar una imagen</p>
+                    <p className="text-base text-gray-600">Arrastra o suelta una imagen acá, o haz click para seleccionar una imagen</p>
+                    <p className="text-sm text-gray-500">Recuerda subir imagenes con dimensiones de 800 x 448</p>
+                    <p className="text-xs text-gray-400">Nota: Asa formatos optimizados como WebP para reducir el peso sin perder calidad.</p>
                 </div>
             )}
         </div>
